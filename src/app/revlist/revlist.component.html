@@ -1,0 +1,38 @@
+<div class="ui text container">
+  <!-- Header -->
+  <div class="ui dividing header">
+    <i class="icon list"></i>
+    <div class="content">
+      Reservation List
+      <div class="sub header">
+        Detial Information
+      </div>
+    </div>
+  </div>
+
+  <!-- No Record Found -->
+  <div class="ui positive icon message" *ngIf="revList.length == 0">
+      <i class="inbox icon"></i>
+      <div class="content">
+        <div class="header">No Record Found</div>
+        <a class="ui link">Reserve now!</a>
+      </div>
+  </div>
+  
+  <!-- Record Found -->
+  <div *ngIf="revList.length != 0">
+    <app-revitem
+      *ngFor="let revItem of revList; let seqNo = index"
+      [revItem]="revItem"
+      [seqNo]="seqNo"
+      [seqFrom]="seqFrom"
+      [seqTo]="seqTo">
+    </app-revitem>
+
+    <app-listcontoller 
+      [curPageNo]="curPageNo"
+      [totPageNo]="totPageNo"
+      (onChangePageNo)="setPage($event)"
+        ></app-listcontoller>
+  </div>
+</div>

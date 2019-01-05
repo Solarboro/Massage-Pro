@@ -1,0 +1,23 @@
+<div class="ui container">
+
+  <!-- Header -->
+  <div class="ui dividing header">
+      <i class="icon bed"></i>
+      <div class="content">
+        New Reservation
+        <div class="sub header">
+            New Reservation Panel
+        </div>
+      </div>
+    </div>
+
+  <!-- Rev Panel -->
+  <div class="ui equal width stackable grid">
+    
+    <!--  -->
+    <app-rev-panel-date-list
+      *ngFor="let curDate of revDateList"
+      [curDate]="curDate"></app-rev-panel-date-list>
+  </div>
+
+</div>

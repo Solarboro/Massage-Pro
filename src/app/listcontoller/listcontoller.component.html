@@ -1,0 +1,23 @@
+<div class="ui center aligned basic vertical segment">
+  <!-- page no -->
+    <label class="ui horizontal divider">
+      {{ curPageNo }} - {{ totPageNo }}
+    </label>
+
+  <!-- Page controller -->
+    <button class="ui icon button" (click)="onSetPageNo(1)">
+      <i class="icon angle double left"></i>
+    </button>
+    
+    <button class="ui icon button" (click)="onSetPageNo(curPageNo-1)" >
+      <i class="icon angle left"></i>
+    </button>
+    
+    <button class="ui icon button" (click)="onSetPageNo(curPageNo+1)">
+      <i class="icon angle right"></i>
+    </button>
+    
+    <button class="ui icon button" (click)="onSetPageNo(totPageNo)">
+      <i class="icon angle double right"></i>
+    </button>
+</div>

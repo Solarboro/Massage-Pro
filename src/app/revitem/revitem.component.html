@@ -1,0 +1,65 @@
+<div class="ui green raised segment" id="revitem"
+    *ngIf="this.seqFrom <= this.seqNo && this.seqNo <= this.seqTo">
+
+  <!-- Cancel / Comment Button -->
+    <button class="ui tiny right floated icon button" 
+           [class.disabled]='!isCancelalbe()'>
+      <i class="icon cancel"></i>
+    </button>
+
+    
+    <button class="ui tiny right floated icon button"
+            [class.disabled]='!isCommentalbe()'>
+      <i class="icon comment"></i>
+    </button>
+
+  <!-- Massgist Info -->
+    <div class="ui grey basic left floated header">
+      <i class="icon user md"></i>
+      {{ revItem.revMasg }}
+    </div>
+
+  <!-- Divider -->
+    <div class="ui horizontal clearing divider">
+      <label class="ui medium green label">
+        {{ 'Accept' }} 
+      </label>
+    </div>
+
+  <!-- Rev Date Time and Location -->
+    <div class="ui equal width stackable grid">
+
+      <!-- Time -->
+      <div class="column">
+        <label class="ui fluid icon basic grey label">
+          <i class="icon clock"></i>
+          {{ revItem.revTime }}
+        </label>
+      </div>
+
+      <!-- Date -->
+      <div class="column">
+        <label class="ui fluid icon basic grey label">
+          <i class="icon calendar"></i>
+          {{ revItem.revDate }}
+        </label>
+      </div>
+
+      <!-- Floor -->
+      <div class="column">
+        <label class="ui fluid icon basic grey label">
+          <i class="icon flag"></i>
+          {{ revItem.revFloor }} F
+        </label>
+      </div>
+
+      <!-- Building -->
+      <div class="column">
+        <label class="ui fluid icon basic grey label">
+          <i class="icon building"></i>
+          {{ revItem.revBuilding }}
+        </label>
+      </div>
+  </div>
+
+</div>

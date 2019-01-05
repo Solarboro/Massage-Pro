@@ -1,0 +1,220 @@
+<html>
+    <head>
+        <title>Login</title>
+        
+        <link rel="stylesheet" type="text/css" href="semantic.min.css">
+        
+        <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
+        <script src="semantic.min.js"></script>
+        
+        <script>
+            function uiAccordion(){
+                $('.ui.accordion')
+                  .accordion()
+                ;
+            }
+            
+            function onSticky(){
+                $('.ui.sticky')
+                  .sticky({
+                    context: '#example1'
+                  })
+                ;
+            }
+            
+            function uiAccordion(){
+            $('.ui.accordion')
+              .accordion()
+            ;
+            }
+        </script>
+    </head>
+    
+    <body>
+    
+    <div class="ui  menu">
+    <div class="ui container">
+      <a class="active item">Item A</a>
+      <a class="item">Item B</a>
+      <a class="item">Item C</a>
+    </div>
+    </div>
+    
+    <div class="ui divider hidden"></div>
+    
+    <div class="ui container">
+        <h2 class="ui dividing header">
+            <i class="icon list"></i>
+            <div class="content">
+                Rev List
+                <div class="sub header">This is for member info</div>
+            </div>
+        </h2>
+    </div>
+    
+    <div class="ui divider hidden"></div>
+    
+    <div class="ui container grid">
+        <div class="two wide column">
+            <div class="ui vertical fluid buttons sticky">
+                <button class="ui active button" onclick="onSticky()">Rev List</button>
+                <button class="ui  button" onclick="uiAccordion()">Basic button</button>
+                <button class="ui  button">Basic button</button>
+            </div>
+        </div>
+        
+        <div class="fourteen wide column">
+                <div class="ui segment" id="example1">
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                    <div class="content">content</div>
+                </div>
+
+        </div>
+    </div>
+    
+    <div class="ui horizontal divider">Footer</div>
+    
+    <div class="ui middle aligned center aligned grid" >
+    <div class="eight wide column" >
+    
+        <h2 class="ui icon header">
+            <i class="circular users icon"></i>
+            Welcome to MyMassage!
+        </h2>
+        
+        <form class="ui form">
+            <div class="ui segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" placeholder="Username" />
+                    </div>
+                </div>
+                
+                <div class="field">
+                    
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="text" placeholder="Password" />
+                    </div>
+                </div>
+                
+                <div class="ui fluid large teal submit button" tabindex="0">LOGIN</div>
+            </div>
+        </form>
+        
+        <div class="ui divider"></div>
+    
+        <div class="ui segment">
+            <div class="ui toggle checkbox">
+                <input type="checkbox" />
+                <label>Remember me</label>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="ui horizontal divider">MISC</div>
+    
+    <button class="ui button">ui button</button>
+    
+    <div class="ui fade animated button" tabindex="0">
+        <div class="visible content">Show</div>
+        <div class="hidden content">Hide</div>
+    </div>
+    
+    <div class="ui labeled button" tabindex="0" onclick="alert('Like')">
+      <div class="ui button"><i class="heart icon"></i> Like </div>
+      <a class="ui basic label">
+        2,048
+      </a>
+    </div>
+    <div class="ui left labeled button" tabindex="0" >
+      <a class="ui basic right pointing label">
+        2,048
+      </a>
+      <div class="ui button"><i class="heart icon"></i> Like </div>
+    </div>
+    <div class="ui left labeled button" tabindex="0" >
+      <a class="ui basic label">
+        1,048
+      </a>
+      <div class="ui icon button">
+        <i class="fork icon"></i>
+      </div>
+    </div>
+    
+    <div class="ui primary button"><i class="icon cloud"></i>Primary</div>
+    <div class="ui secondary button">Secondary</div>
+    
+    <div class="ui icon button">
+        <i class="cloud icon"></i>
+    </div>
+    
+    <button class="ui basic button">
+        <i class="icon user"></i> Add Friend
+    </button>
+    
+    <button class="ui basic button">
+        <i class="icon user"></i>Add Friend
+    </button>
+    
+    <div class="ui basic button" tabindex="0">
+        <i class="icon user"></i> Add Friend
+    </div>
+    
+    <div class="ui icon buttons">
+      <button class="ui button active"><i class="align left icon"></i></button>
+      <button class="ui button"><i class="align center icon"></i></button>
+      <button class="ui button"><i class="align right icon"></i></button>
+      <button class="ui button"><i class="align justify icon"></i></button>
+    </div>
+    <div class="ui icon buttons">
+      <button class="ui button active"><i class="bold icon"></i></button>
+      <button class="ui button"><i class="underline icon"></i></button>
+      <button class="ui button"><i class="text width icon"></i></button>
+    </div>
+    <div class="ui divider"></div>
+    
+    <div class="ui fade animated basic button">
+        <div class="visible content">Frank</div>
+        <div class="hidden content">Kingson</div>
+    </div>
+    <div class="ui styled fluid accordion">
+  <div class="active title"><i class="dropdown icon"></i> What is a dog? </div>
+  <div class="active content">
+    <p>狗算是一种家畜。以其忠诚与忠心广受人类欢迎, 可以在世界各地的许多家庭里发现这个受欢迎的客人。</p>
+  </div>
+  <div class="title"><i class="dropdown icon"></i> What kinds of dogs are there? </div>
+  <div class="content">
+    <p>狗有许多品种，每个品种都有不同的大小及性格，饲主通常选择适合自己生活方式的品种当作自已的伙伴，其中最受欢迎的品种绝对是吉娃娃。</p>
+  </div>
+  <div class="title"><i class="dropdown icon"></i> How do you acquire a dog? </div>
+  <div class="content">
+    <p>通常有三种方式可以取得一只狗狗，宠物店、私人饲主或是动物之家。 (请以领养代替购买)</p>
+    <p>你可以在动物之家内领养一只健康的小狗，比起在宠物店买，收容所中的宠物比较不容易有近亲交配出现的缺陷问题，而且领养一只小狗的费用远比你在宠物店中购买便宜得多。</p>
+  </div>
+</div>
+    </body>
+
+</html>
