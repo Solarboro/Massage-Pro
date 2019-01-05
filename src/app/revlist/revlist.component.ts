@@ -4,8 +4,7 @@ import { Reservation } from '../model/reservation';
 @Component({
   selector: 'app-revlist',
   templateUrl: './revlist.component.html',
-  styleUrls: ['./revlist.component.css'],
-  inputs: ['listSize']
+  styleUrls: ['./revlist.component.css']
 })
 export class RevlistComponent implements OnInit {
   revList: Reservation[];
@@ -33,6 +32,7 @@ export class RevlistComponent implements OnInit {
   seqTo: number;
 
   constructor() {
+    this.listSize = 4;
   }
 
   ngOnInit() {
