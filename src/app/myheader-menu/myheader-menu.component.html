@@ -1,17 +1,17 @@
 <div class="ui container">
   <div class="ui inverted secondary menu">
 
-    <a class="item" [routerLink]="['home']">
+    <a class="item" [routerLink]="['home']" routerLinkActive="active" >
       <i class="icon home"></i>
       Home
     </a>
 
-    <a class="item" [routerLink]="['newRev']">
+    <a class="item" [routerLink]="['newRev']" routerLinkActive="active" *ngIf="menGurard.canActivate()" >
       <i class="icon bed"></i>
       New Rev
     </a>
 
-    <a class="item" [routerLink]="['revList']">
+    <a class="item" [routerLink]="['revList']" routerLinkActive="active" *ngIf="menuGuardAdmin.canActivate()">
       <i class="icon list"></i>
       Reservation
     </a>

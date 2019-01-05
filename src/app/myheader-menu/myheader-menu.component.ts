@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { MenuGuard, MenuGuardAdmin } from '../controller/menu-guard';
 
 @Component({
   selector: 'app-myheader-menu',
@@ -8,7 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MyheaderMenuComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private menGurard: MenuGuard,
+              private menuGuardAdmin: MenuGuardAdmin
+              ) { }
 
   ngOnInit() {
   }

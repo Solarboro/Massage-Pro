@@ -22,6 +22,8 @@ import { RevPanelComponent } from './rev-panel/rev-panel.component';
 import { RevPanelDateListComponent } from './rev-panel-date-list/rev-panel-date-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MyhomeComponent } from './myhome/myhome.component';
+import { LoginService } from './Service/login-service';
+import { MenuGuard, MenuGuardAdmin } from './controller/menu-guard';
 
 registerLocaleData(en);
 
@@ -30,8 +32,8 @@ registerLocaleData(en);
 const myRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: MyhomeComponent },
-  { path: 'newRev', component: RevPanelComponent },
-  { path: 'revList', component: RevlistComponent }
+  { path: 'newRev', component: RevPanelComponent, canActivate: [MenuGuard]},
+  { path: 'revList', component: RevlistComponent, canActivate: [MenuGuardAdmin]}
 ];
 
 @NgModule({
@@ -60,6 +62,9 @@ const myRoutes: Routes = [
     RouterModule.forRoot(myRoutes)
   ],
   providers: [
+    LoginService,
+    MenuGuard,
+    MenuGuardAdmin,
     { provide: NZ_I18N, useValue: en_US },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
