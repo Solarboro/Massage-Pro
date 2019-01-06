@@ -1,15 +1,17 @@
-<div class="ui green raised segment" id="revitem"
+<div class="ui raised segment" id="revitem"
+    [ngClass]="statusColor"
     *ngIf="this.seqFrom <= this.seqNo && this.seqNo <= this.seqTo">
 
   <!-- Cancel / Comment Button -->
     <button class="ui tiny right floated icon button" 
-           [class.disabled]='!isCancelalbe()'>
+           [class.disabled]='disableCancel()'
+           (click)="revCancel()">
       <i class="icon cancel"></i>
     </button>
 
     
     <button class="ui tiny right floated icon button"
-            [class.disabled]='!isCommentalbe()'>
+            [class.disabled]='disableComment()'>
       <i class="icon comment"></i>
     </button>
 
@@ -21,8 +23,8 @@
 
   <!-- Divider -->
     <div class="ui horizontal clearing divider">
-      <label class="ui medium green label">
-        {{ 'Accept' }} 
+      <label class="ui medium label" [ngClass]="statusColor">
+        {{ statusDesc }} 
       </label>
     </div>
 

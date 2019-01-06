@@ -30,11 +30,11 @@
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.css",
-              "./node_modules/semantic-ui/dist/semantic.min.css"
+              "./semantic/ref/semantic.min.css"
             ],
             "scripts": [
-              "./node_modules/semantic-ui/dist/semantic.min.js",
-              "./node_modules/jquery/dist/jquery.min.js"
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./semantic/ref/semantic.min.js"
             ]
           },
           "configurations": {

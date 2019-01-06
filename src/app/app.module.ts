@@ -24,6 +24,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MyhomeComponent } from './myhome/myhome.component';
 import { LoginService } from './Service/login-service';
 import { MenuGuard, MenuGuardAdmin } from './controller/menu-guard';
+import { NgSemanticModule } from 'ng-semantic';
+import { MyheaderMenuUcpComponent } from './myheader-menu-ucp/myheader-menu-ucp.component';
+import { RevitemDialogCancelComponent } from './revitem-dialog-cancel/revitem-dialog-cancel.component';
 
 registerLocaleData(en);
 
@@ -31,9 +34,10 @@ registerLocaleData(en);
 // Routes
 const myRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'logout', redirectTo: 'home' },
   { path: 'home', component: MyhomeComponent },
   { path: 'newRev', component: RevPanelComponent, canActivate: [MenuGuard]},
-  { path: 'revList', component: RevlistComponent, canActivate: [MenuGuardAdmin]}
+  { path: 'revList', component: RevlistComponent, canActivate: [MenuGuard]}
 ];
 
 @NgModule({
@@ -50,7 +54,9 @@ const myRoutes: Routes = [
     ListfilterComponent,
     RevPanelComponent,
     RevPanelDateListComponent,
-    MyhomeComponent
+    MyhomeComponent,
+    MyheaderMenuUcpComponent,
+    RevitemDialogCancelComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +65,8 @@ const myRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     NoopAnimationsModule,
-    RouterModule.forRoot(myRoutes)
+    RouterModule.forRoot(myRoutes),
+    NgSemanticModule
   ],
   providers: [
     LoginService,

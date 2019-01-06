@@ -1,0 +1,17 @@
+     <!--  -->
+     <div class="ui top pointing inverted dropdown">
+        {{ loginService.getUsername() }}
+      <i class="icon dropdown"></i>
+      <div class="menu">
+
+        <div class="item">
+          <i class="icon setting"></i>
+          Setting
+        </div>
+
+        <a [routerLink]="['logout']" class="item" (click)="loginService.logout()">
+          <i class="icon sign out"></i>
+          Logout
+        </a>
+      </div>
+    </div>

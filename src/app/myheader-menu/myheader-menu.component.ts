@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuGuard, MenuGuardAdmin } from '../controller/menu-guard';
+import { LoginService } from '../Service/login-service';
 
 @Component({
   selector: 'app-myheader-menu',
@@ -9,10 +10,12 @@ import { MenuGuard, MenuGuardAdmin } from '../controller/menu-guard';
 export class MyheaderMenuComponent implements OnInit {
 
   constructor(private menGurard: MenuGuard,
-              private menuGuardAdmin: MenuGuardAdmin
+              private menuGuardAdmin: MenuGuardAdmin,
+              private loginService: LoginService
               ) { }
 
   ngOnInit() {
+
   }
 
 }

@@ -14,6 +14,5 @@ export class MyheaderGetstartedComponent implements OnInit {
   }
 
   getStart(): void {
-    alert('start');
   }
 }

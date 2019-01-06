@@ -13,10 +13,21 @@ export class RevitemComponent implements OnInit {
   @Input() seqFrom: number;
   @Input() seqTo: number;
 
+  private statusColor: string;
+  private statusDesc: string;
+
+  private btnCommentRule: boolean[];
+  private btnCancelRule: boolean[];
+
   constructor() { }
 
   ngOnInit() {
-  }
+    this.statusColor = StatusColor[this.revItem.revStatus];
+    this.statusDesc = StatusDesc[this.revItem.revStatus];
+
+    this.btnCommentRule = [ false, false, true, false, false ];
+    this.btnCancelRule = [ false, true, false, false, false ];
+   }
 
   isCommentalbe(): boolean {
 
@@ -27,4 +38,32 @@ export class RevitemComponent implements OnInit {
 
     return true;
   }
+
+  disableComment(): boolean {
+    return !this.btnCommentRule[this.revItem.revStatus] || this.revItem.revComment;
+  }
+
+  disableCancel(): boolean {
+    return !this.btnCancelRule[this.revItem.revStatus];
+  }
+
+  revCancel(): void {
+    console.log('revCancel');
+    $('ui basic modal').modal('show');
+  }
 }
+
+enum StatusColor {
+  orange = 1,
+  green = 2,
+  red = 3,
+  grey = 4 }
+
+enum StatusDesc {
+  Accepted = 1,
+  Finished = 2,
+  'No Show' = 3,
+  Cancel = 4 }
+
+
+

@@ -11,19 +11,14 @@
       New Rev
     </a>
 
-    <a class="item" [routerLink]="['revList']" routerLinkActive="active" *ngIf="menuGuardAdmin.canActivate()">
+    <a class="item" [routerLink]="['revList']" routerLinkActive="active" *ngIf="menGurard.canActivate()">
       <i class="icon list"></i>
       Reservation
     </a>
 
-    <a class="item">
+    <a class="item" *ngIf="menGurard.canActivate()">
       <i class="icon user md"></i>
       {{ 'Massgist' }}
-    </a>
-
-    <a class="item">
-      <i class="icon setting"></i>
-      Setting
     </a>
 
     <a class="item">
@@ -32,7 +27,13 @@
     </a>
 
     <div class="right item">
-      <button class="ui inverted basic button">Sign in</button>
+      <button class="ui inverted basic button" 
+              *ngIf="!loginService.isLogin()"
+              (click)="loginService.login()">Sign in</button>
+
+      <app-myheader-menu-ucp *ngIf="loginService.isLogin()"></app-myheader-menu-ucp>
+ 
+
     </div>
     
   </div>
