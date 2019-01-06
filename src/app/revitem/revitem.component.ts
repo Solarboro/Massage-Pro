@@ -57,7 +57,7 @@ enum StatusDesc {
   Accepted = 1,
   Finished = 2,
   'No Show' = 3,
-  Cancel = 4 }
+  Cancelled = 4 }
 
 
 
