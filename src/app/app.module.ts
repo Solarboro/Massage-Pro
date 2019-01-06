@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -69,7 +68,6 @@ const myRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
     NoopAnimationsModule,
@@ -80,7 +78,6 @@ const myRoutes: Routes = [
     LoginService,
     MenuGuard,
     MenuGuardAdmin,
-    { provide: NZ_I18N, useValue: en_US },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
