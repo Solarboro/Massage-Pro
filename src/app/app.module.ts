@@ -30,6 +30,7 @@ import { RevitemDialogCancelComponent } from './revitem-dialog-cancel/revitem-di
 import { RevitemDialogCommentComponent } from './revitem-dialog-comment/revitem-dialog-comment.component';
 import { RevitemMsgOntimeComponent } from './revitem-msg-ontime/revitem-msg-ontime.component';
 import { RevitemMsgCommentComponent } from './revitem-msg-comment/revitem-msg-comment.component';
+import { MyheaderSigninPanelComponent } from './myheader-signin-panel/myheader-signin-panel.component';
 
 registerLocaleData(en);
 
@@ -62,7 +63,8 @@ const myRoutes: Routes = [
     RevitemDialogCancelComponent,
     RevitemDialogCommentComponent,
     RevitemMsgOntimeComponent,
-    RevitemMsgCommentComponent
+    RevitemMsgCommentComponent,
+    MyheaderSigninPanelComponent
   ],
   imports: [
     BrowserModule,

@@ -18,4 +18,10 @@ export class MyheaderMenuComponent implements OnInit {
 
   }
 
+  showLoginPanel(): void {
+    $('.ui.sidebar')
+    .sidebar('toggle')
+  ;
+  }
+
 }

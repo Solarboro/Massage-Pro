@@ -1,0 +1,38 @@
+<div class="ui right sidebar segment">
+  <div class="ui form">
+      <div class="ui teal center aligned dividing icon header">
+          <i class="circular bed icon"></i>
+          Sign in to MyMassage
+      </div>
+      
+      <div class="field">
+          <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" placeholder="Username" #myuser />
+          </div>
+      </div>
+      
+      <div class="field">
+          <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" placeholder="Password" #mypwd />
+          </div>
+      </div>
+      
+      <div class="field">
+          <button class="ui teal fluid button"
+            (click)="mylogin(myuser.value, mypwd.value)">Sign in</button>
+      </div>
+      
+      
+      
+      <div class="field">
+          <div class="ui silder checkbox">
+              <input type="checkbox" />
+              <label>Remember Me</label>
+          </div>
+          
+      </div>
+  </div>
+ 
+  </div>
