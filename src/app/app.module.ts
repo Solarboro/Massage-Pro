@@ -72,7 +72,8 @@ const myRoutes: Routes = [
     HttpClientModule,
     NoopAnimationsModule,
     RouterModule.forRoot(myRoutes),
-    NgSemanticModule
+    NgSemanticModule,
+    HttpClientModule
   ],
   providers: [
     LoginService,
