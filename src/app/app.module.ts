@@ -27,6 +27,9 @@ import { MenuGuard, MenuGuardAdmin } from './controller/menu-guard';
 import { NgSemanticModule } from 'ng-semantic';
 import { MyheaderMenuUcpComponent } from './myheader-menu-ucp/myheader-menu-ucp.component';
 import { RevitemDialogCancelComponent } from './revitem-dialog-cancel/revitem-dialog-cancel.component';
+import { RevitemDialogCommentComponent } from './revitem-dialog-comment/revitem-dialog-comment.component';
+import { RevitemMsgOntimeComponent } from './revitem-msg-ontime/revitem-msg-ontime.component';
+import { RevitemMsgCommentComponent } from './revitem-msg-comment/revitem-msg-comment.component';
 
 registerLocaleData(en);
 
@@ -56,7 +59,10 @@ const myRoutes: Routes = [
     RevPanelDateListComponent,
     MyhomeComponent,
     MyheaderMenuUcpComponent,
-    RevitemDialogCancelComponent
+    RevitemDialogCancelComponent,
+    RevitemDialogCommentComponent,
+    RevitemMsgOntimeComponent,
+    RevitemMsgCommentComponent
   ],
   imports: [
     BrowserModule,

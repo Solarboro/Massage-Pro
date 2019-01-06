@@ -29,16 +29,6 @@ export class RevitemComponent implements OnInit {
     this.btnCancelRule = [ false, true, false, false, false ];
    }
 
-  isCommentalbe(): boolean {
-
-    return !this.revItem.revComment;
-  }
-
-  isCancelalbe(): boolean {
-
-    return true;
-  }
-
   disableComment(): boolean {
     return !this.btnCommentRule[this.revItem.revStatus] || this.revItem.revComment;
   }
@@ -48,9 +38,13 @@ export class RevitemComponent implements OnInit {
   }
 
   revCancel(): void {
-    console.log('revCancel');
-    $('ui basic modal').modal('show');
+    $('.ui.revcancel.basic.modal').modal('show');
   }
+
+  revComment(): void {
+    $('.ui.revcomment.modal').modal('show');
+  }
+
 }
 
 enum StatusColor {
