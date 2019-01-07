@@ -4,7 +4,10 @@ import { Reservation } from '../model/reservation';
 @Component({
   selector: 'app-revlist',
   templateUrl: './revlist.component.html',
-  styleUrls: ['./revlist.component.css']
+  styleUrls: ['./revlist.component.css'],
+  host: {
+    class: 'ui basic segment'
+  }
 })
 export class RevlistComponent implements OnInit {
   revList: Reservation[];
