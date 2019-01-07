@@ -60,7 +60,7 @@ export class RevlistComponent implements OnInit {
     this.revItem1.revFloor = '13';
     this.revItem1.revMasg = 'One';
     this.revItem1.revStatus = 1;
-    this.revItem1.revTime = '9:00 - 9:30';
+    this.revItem1.revTime = 1;
 
     this.revItem2.revBuilding = 'XY';
     this.revItem2.revComment = true;
@@ -68,7 +68,7 @@ export class RevlistComponent implements OnInit {
     this.revItem2.revFloor = '13';
     this.revItem2.revMasg = 'Two';
     this.revItem2.revStatus = 2;
-    this.revItem2.revTime = '9:00 - 9:30';
+    this.revItem2.revTime = 1;
 
     this.revItem3.revBuilding = 'XY';
     this.revItem3.revComment = false;
@@ -76,7 +76,7 @@ export class RevlistComponent implements OnInit {
     this.revItem3.revFloor = '13';
     this.revItem3.revMasg = 'Three';
     this.revItem3.revStatus = 3;
-    this.revItem3.revTime = '9:00 - 9:30';
+    this.revItem3.revTime = 1;
 
     //
     this.revItem4.revBuilding = 'XY';
@@ -85,7 +85,7 @@ export class RevlistComponent implements OnInit {
     this.revItem4.revFloor = '13';
     this.revItem4.revMasg = 'Four';
     this.revItem4.revStatus = 4;
-    this.revItem4.revTime = '9:00 - 9:30';
+    this.revItem4.revTime = 1;
 
     this.revItem5.revBuilding = 'XY';
     this.revItem5.revComment = true;
@@ -93,7 +93,7 @@ export class RevlistComponent implements OnInit {
     this.revItem5.revFloor = '13';
     this.revItem5.revMasg = 'Five';
     this.revItem5.revStatus = 1;
-    this.revItem5.revTime = '9:00 - 9:30';
+    this.revItem5.revTime = 1;
 
     this.revItem6.revBuilding = 'XY';
     this.revItem6.revComment = false;
@@ -101,7 +101,7 @@ export class RevlistComponent implements OnInit {
     this.revItem6.revFloor = '13';
     this.revItem6.revMasg = 'Six';
     this.revItem6.revStatus = 1;
-    this.revItem6.revTime = '9:00 - 9:30';
+    this.revItem6.revTime = 1;
     //
     this.revItem7.revBuilding = 'XY';
     this.revItem7.revComment = false;
@@ -109,7 +109,7 @@ export class RevlistComponent implements OnInit {
     this.revItem7.revFloor = '13';
     this.revItem7.revMasg = 'Seven';
     this.revItem7.revStatus = 2;
-    this.revItem7.revTime = '9:00 - 9:30';
+    this.revItem7.revTime = 1;
 
     this.revItem8.revBuilding = 'XY';
     this.revItem8.revComment = true;
@@ -117,7 +117,7 @@ export class RevlistComponent implements OnInit {
     this.revItem8.revFloor = '13';
     this.revItem8.revMasg = 'Eight';
     this.revItem8.revStatus = 2;
-    this.revItem8.revTime = '9:00 - 9:30';
+    this.revItem8.revTime = 1;
 
     this.revItem9.revBuilding = 'XY';
     this.revItem9.revComment = false;
@@ -125,7 +125,7 @@ export class RevlistComponent implements OnInit {
     this.revItem9.revFloor = '13';
     this.revItem9.revMasg = 'Nine';
     this.revItem9.revStatus = 2;
-    this.revItem9.revTime = '9:00 - 9:30';
+    this.revItem9.revTime = 1;
 
     //
     this.revItema.revBuilding = 'XY';
@@ -134,7 +134,7 @@ export class RevlistComponent implements OnInit {
     this.revItema.revFloor = '13';
     this.revItema.revMasg = 'AAAA';
     this.revItema.revStatus = 2;
-    this.revItema.revTime = '9:00 - 9:30';
+    this.revItema.revTime = 1;
 
     this.revItemb.revBuilding = 'XY';
     this.revItemb.revComment = true;
@@ -142,7 +142,7 @@ export class RevlistComponent implements OnInit {
     this.revItemb.revFloor = '13';
     this.revItemb.revMasg = 'BBBB';
     this.revItemb.revStatus = 2;
-    this.revItemb.revTime = '9:00 - 9:30';
+    this.revItemb.revTime = 1;
 
     this.revItemc.revBuilding = 'XY';
     this.revItemc.revComment = false;
@@ -150,7 +150,7 @@ export class RevlistComponent implements OnInit {
     this.revItemc.revFloor = '13';
     this.revItemc.revMasg = 'CCCC';
     this.revItemc.revStatus = 2;
-    this.revItemc.revTime = '9:00 - 9:30';
+    this.revItemc.revTime = 1;
 
     //
     this.revList = [

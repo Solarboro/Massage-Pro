@@ -1,12 +1,13 @@
 export class Reservation {
     // ID
-    id: number;
+    _id: number;
 
     // Business
+    uid: string;
     revMasg: string;
     revStatus: number;
     revComment: boolean;
-    revTime: string;
+    revTime: number;
     revDate: string;
     revFloor: string;
     revBuilding: string;
