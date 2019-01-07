@@ -1,5 +1,7 @@
 <div class="ui right sidebar segment">
-  <div class="ui form">
+  <form class="ui form" 
+        [class.warning]="!loginForm.valid"
+        [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm.value)">
       <div class="ui teal center aligned dividing icon header">
           <i class="circular bed icon"></i>
           Sign in to MyMassage
@@ -8,22 +10,25 @@
       <div class="field">
           <div class="ui left icon input">
           <i class="user icon"></i>
-          <input type="text" placeholder="Username" #myuser />
+          <input type="text" placeholder="Username" [formControl]="loginForm.controls['username']" />
           </div>
       </div>
       
       <div class="field">
           <div class="ui left icon input">
           <i class="lock icon"></i>
-          <input type="password" placeholder="Password" #mypwd />
+          <input type="password" placeholder="Password" [formControl]="loginForm.controls['password']" />
           </div>
       </div>
       
       <div class="field">
-          <button class="ui teal fluid button"
-            (click)="mylogin(myuser.value, mypwd.value)">Sign in</button>
+          <button type="submit" class="ui teal fluid button">Sign in</button>
       </div>
       
+      <!--  -->
+      <div class="ui warning message">
+          Password is "abcd1234"
+      </div>
       
       
       <div class="field">
@@ -33,6 +38,6 @@
           </div>
           
       </div>
-  </div>
+    </form>
  
   </div>

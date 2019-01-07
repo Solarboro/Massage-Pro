@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -69,11 +69,11 @@ const myRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NoopAnimationsModule,
     RouterModule.forRoot(myRoutes),
-    NgSemanticModule,
-    HttpClientModule
+    NgSemanticModule
   ],
   providers: [
     LoginService,
