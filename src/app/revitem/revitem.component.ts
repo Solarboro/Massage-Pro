@@ -13,28 +13,58 @@ export class RevitemComponent implements OnInit {
   @Input() seqFrom: number;
   @Input() seqTo: number;
 
+  private StatusColorMap: { [key: number]: string} = {};
+  private StatusDescmap: { [key: number]: string} = {};
+
+  private btnCommentRuleMap: { [key: number]: boolean} = {};
+  private btnCancelRuleMap: { [key: number]: boolean} = {};
+
   private statusColor: string;
   private statusDesc: string;
 
   private btnCommentRule: boolean[];
   private btnCancelRule: boolean[];
 
-  constructor() { }
+  constructor() {
+    //
+    this.StatusColorMap[1] = 'orange';
+    this.StatusColorMap[2] = 'green';
+    this.StatusColorMap[3] = 'red';
+    this.StatusColorMap[4] = 'grey';
+
+    //
+    this.StatusDescmap[1] = 'Accepted';
+    this.StatusDescmap[2] = 'Finished';
+    this.StatusDescmap[3] = 'No Show';
+    this.StatusDescmap[4] = 'Cancelled';
+
+    //
+    this.btnCommentRuleMap[1] = false;
+    this.btnCommentRuleMap[2] = true;
+    this.btnCommentRuleMap[3] = false;
+    this.btnCommentRuleMap[4] = false;
+
+    //
+    this.btnCancelRuleMap[1] = true;
+    this.btnCancelRuleMap[2] = false;
+    this.btnCancelRuleMap[3] = false;
+    this.btnCancelRuleMap[4] = false;
+
+  }
 
   ngOnInit() {
-    this.statusColor = StatusColor[this.revItem.revStatus];
-    this.statusDesc = StatusDesc[this.revItem.revStatus];
+    //
+    this.statusColor = this.StatusColorMap[this.revItem.revStatus];
+    this.statusDesc = this.StatusDescmap[this.revItem.revStatus];
 
-    this.btnCommentRule = [ false, false, true, false, false ];
-    this.btnCancelRule = [ false, true, false, false, false ];
    }
 
   disableComment(): boolean {
-    return !this.btnCommentRule[this.revItem.revStatus] || this.revItem.revComment;
+    return !this.btnCommentRuleMap[this.revItem.revStatus] || this.revItem.revComment;
   }
 
   disableCancel(): boolean {
-    return !this.btnCancelRule[this.revItem.revStatus];
+    return !this.btnCancelRuleMap[this.revItem.revStatus];
   }
 
   revCancel(): void {
@@ -46,18 +76,3 @@ export class RevitemComponent implements OnInit {
   }
 
 }
-
-enum StatusColor {
-  orange = 1,
-  green = 2,
-  red = 3,
-  grey = 4 }
-
-enum StatusDesc {
-  Accepted = 1,
-  Finished = 2,
-  'No Show' = 3,
-  Cancelled = 4 }
-
-
-
