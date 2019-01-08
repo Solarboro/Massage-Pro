@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Reservation } from '../model/reservation';
 import { RevStatus } from '../model/setting/rev-status';
 import { ApiAgentService } from '../Service/api-agent.service';
+import { RevDuration } from '../model/setting/rev-duration';
 
 @Component({
   selector: 'app-revitem',
@@ -16,9 +17,11 @@ export class RevitemComponent implements OnInit {
   @Input() seqTo: number;
 
   @Input() private revStatusMap: { [key: number]: RevStatus};
+  @Input() private revDurationMap: { [key: number]: RevDuration};
 
   private statusColor: string;
   private statusDesc: string;
+  private revTimeDesc: string;
 
   constructor(private apiAgentService: ApiAgentService) {
   }
@@ -26,6 +29,7 @@ export class RevitemComponent implements OnInit {
   ngOnInit() {
     this.statusColor = this.revStatusMap[this.revItem.revStatus].revStatusCol;
     this.statusDesc = this.revStatusMap[this.revItem.revStatus].revStatusDesc;
+    this.revTimeDesc = this.revDurationMap[this.revItem.revTime].revTimeDesc;
 
    }
 
@@ -44,5 +48,5 @@ export class RevitemComponent implements OnInit {
   revComment(): void {
     $('.ui.revcomment.modal').modal('show');
   }
-
+  
 }

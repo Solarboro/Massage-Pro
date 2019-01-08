@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RepositorySettingService } from './Service/Repository/repository-setting.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +11,11 @@ export class AppComponent {
   redFlag: boolean;
   myvalue: number;
 
-  isRed(): boolean {
-    return this.redFlag;
+  constructor(
+    private repositorySettingService: RepositorySettingService
+  ) {
+    // Sync up Setting.
+    this.repositorySettingService.dataSyncupFromAPIServer();
   }
 
-  redActive(): void {
-    this.redFlag = true;
-
-    this.myvalue = Math.ceil(11 / 5);
-  }
-
-  redDisalbe(): void {
-    this.redFlag = false;
-  }
 }
