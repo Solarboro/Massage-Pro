@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from '../model/reservation';
 import { ApiAgentService } from '../Service/api-agent.service';
+import { RevStatus } from '../model/setting/rev-status';
 
 @Component({
   selector: 'app-revlist',
@@ -13,6 +14,9 @@ import { ApiAgentService } from '../Service/api-agent.service';
 export class RevlistComponent implements OnInit {
   // Rev Records
   private revList: Reservation[] = [];
+
+  //
+  private revStatusMap: { [key: number]: RevStatus};
 
   // List Size
   private listSize: number;
@@ -38,6 +42,15 @@ export class RevlistComponent implements OnInit {
       this.revList = data;
       this.refreshPage();
      });
+
+     //
+    apiAgentService.aGet<{ [key: number]: RevStatus}>('settingRSMap')
+    .subscribe(
+      data => {
+        this.revStatusMap = data;
+        this.refreshPage();
+      }
+    );
   }
 
   ngOnInit() {

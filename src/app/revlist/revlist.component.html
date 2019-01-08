@@ -24,6 +24,7 @@
     <app-revitem
       *ngFor="let revItem of revList; let seqNo = index"
       [revItem]="revItem"
+      [revStatusMap]="revStatusMap"
       [seqNo]="seqNo"
       [seqFrom]="seqFrom"
       [seqTo]="seqTo">

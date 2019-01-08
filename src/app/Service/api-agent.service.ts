@@ -26,6 +26,11 @@ export class ApiAgentService {
       this.urlMap = {};
       this.urlMap['revList'] = 'http://localhost:8080/rev/find';
       this.urlMap['revSave'] = 'http://localhost:8080/rev/save';
+
+      // Setting - RevStatus
+      this.urlMap['settingRSMap'] = 'http://localhost:8080/setting/map/revstatus';
+      this.urlMap['settingRSList'] = 'http://localhost:8080/setting/revstatus/find';
+      this.urlMap['settingRSSave'] = 'http://localhost:8080/setting/revstatus/save';
     }
 
   // URL Mapping
