@@ -19,21 +19,30 @@ export class MyheaderSigninPanelComponent implements OnInit {
 
   //
   private loginStatus: boolean;
-
   private loginForm: FormGroup;
+
+  //
+  private errorFlag: boolean;
+  private errorMsg: string;
+  private errorMsg_1: string;
+  private errorMsg_2: string;
 
   constructor(private loginService: LoginService,
               private fb: FormBuilder,
               private apiAgentService: ApiAgentService,
               private repositoryService: RepositoryService
   ) {
-
+      // Initialize
         this.username = null;
         this.remember = false;
+
+      // Error Message
+      this.errorMsg_1 = 'Connection Error !';
+      this.errorMsg_2 = 'User Not Found / PWD Error !'
    }
 
   ngOnInit() {
-
+    this.errorFlag = true;
     this.isRememberMeOn();
 
     this.loginForm = this.fb.group({
@@ -72,7 +81,20 @@ export class MyheaderSigninPanelComponent implements OnInit {
           (error: Response) => {
             this.loginStatus = false;
             this.loginService.setLoginStatus(this.loginStatus);
-            console.log(error);
+
+            if ( error.status === 404 ) {
+                this.errorMsg = this.errorMsg_2;
+            } else {
+                this.errorMsg = this.errorMsg_1;
+            }
+
+            // 
+            this.errorFlag = false;
+            setTimeout(() => {
+              this.errorFlag = true;
+            }, 3000);
+
+            console.log(error.status);
           },
           () => {
             //

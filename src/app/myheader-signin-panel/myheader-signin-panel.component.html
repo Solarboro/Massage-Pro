@@ -1,6 +1,7 @@
 <div class="ui right sidebar segment">
   <form class="ui form" 
         [class.warning]="!loginForm.valid"
+        [class.error]="!errorFlag"
         [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm.value)">
       <div class="ui teal center aligned dividing icon header">
           <i class="circular bed icon"></i>
@@ -29,6 +30,10 @@
       <div class="ui warning message">
           Password is "abcd1234"
       </div>
+
+      <div class="ui error message">
+        {{ errorMsg }}
+    </div>
       
       
       <div class="field">
