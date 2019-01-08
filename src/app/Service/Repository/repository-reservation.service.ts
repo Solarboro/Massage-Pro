@@ -15,9 +15,13 @@ export class RepositoryReservationService {
   ) {
 
    }
+  //  Clean Data
+  clean(): void {
+    this.reservationList = [];
+  }
 
   // Sync up Data from API Server
-  Sync(): void {
+  syncUp(): void {
     // Direct read data from API
     this.apiAgentService.aGet<Reservation[]>('revList')
     .subscribe( data => {

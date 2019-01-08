@@ -17,8 +17,14 @@ export class RepositorySettingService {
 
    }
 
+  //  Clean Data
+  clean(): void {
+    this.revDurationMap = {};
+    this.revStatusMap = {};
+  }
+
   // Sync up Data from API Server
-  Sync(): void {
+  syncUp(): void {
     // Setting - RevStatus
     this.apiAgentService.aGet<{ [key: number]: RevStatus}>('settingRSMap')
     .subscribe(

@@ -22,7 +22,7 @@ import { RevPanelDateListComponent } from './rev-panel-date-list/rev-panel-date-
 import { RouterModule, Routes } from '@angular/router';
 import { MyhomeComponent } from './myhome/myhome.component';
 import { LoginService } from './Service/login-service';
-import { MenuGuard, MenuGuardAdmin } from './controller/menu-guard';
+import { MenuGuard, MenuGuardAdmin, MenuGuardMasg } from './controller/menu-guard';
 import { NgSemanticModule } from 'ng-semantic';
 import { MyheaderMenuUcpComponent } from './myheader-menu-ucp/myheader-menu-ucp.component';
 import { RevitemDialogCancelComponent } from './revitem-dialog-cancel/revitem-dialog-cancel.component';
@@ -79,6 +79,7 @@ const myRoutes: Routes = [
     LoginService,
     MenuGuard,
     MenuGuardAdmin,
+    MenuGuardMasg,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

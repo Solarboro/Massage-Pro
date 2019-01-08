@@ -22,7 +22,19 @@ export class MenuGuardAdmin implements CanActivate {
 
     //
     canActivate(): boolean {
-        return true;
+        return this.loginServiceImpl.isAdmin();
+    }
+}
+
+@Injectable()
+export class MenuGuardMasg implements CanActivate {
+    constructor(private loginServiceImpl: LoginService) {
+
+    }
+
+    //
+    canActivate(): boolean {
+        return this.loginServiceImpl.isMasg();
     }
 }
 

@@ -24,6 +24,10 @@ export class ApiAgentService {
 
     // Url Mapping
       this.urlMap = {};
+
+      // Login
+      this.urlMap['login'] = 'http://localhost:8080/login';
+      // Reservation
       this.urlMap['revList'] = 'http://localhost:8080/rev/find';
       this.urlMap['revSave'] = 'http://localhost:8080/rev/save';
 

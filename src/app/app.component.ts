@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RepositorySettingService } from './Service/Repository/repository-setting.service';
 import { RepositoryReservationService } from './Service/Repository/repository-reservation.service';
+import { RepositoryService } from './Service/Repository/repository.service';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +14,11 @@ export class AppComponent {
   myvalue: number;
 
   constructor(
-    private repositorySettingService: RepositorySettingService,
-    private repositoryReservationService: RepositoryReservationService
+    private repositoryService: RepositoryService
   ) {
     // Sync up Setting.
-    this.repositorySettingService.Sync();
+    this.repositoryService.syncUpSetting();
 
-    // Sync up Reservation Records;
-    this.repositoryReservationService.Sync();
   }
 
 }
