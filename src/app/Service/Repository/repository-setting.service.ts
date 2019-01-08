@@ -15,10 +15,10 @@ export class RepositorySettingService {
     private apiAgentService: ApiAgentService
   ) {
 
-    
    }
 
-  dataSyncupFromAPIServer(): void {
+  // Sync up Data from API Server
+  Sync(): void {
     // Setting - RevStatus
     this.apiAgentService.aGet<{ [key: number]: RevStatus}>('settingRSMap')
     .subscribe(

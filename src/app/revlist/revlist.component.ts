@@ -4,6 +4,7 @@ import { ApiAgentService } from '../Service/api-agent.service';
 import { RevStatus } from '../model/setting/rev-status';
 import { RevDuration } from '../model/setting/rev-duration';
 import { RepositorySettingService } from '../Service/Repository/repository-setting.service';
+import { RepositoryReservationService } from '../Service/Repository/repository-reservation.service';
 
 @Component({
   selector: 'app-revlist',
@@ -21,7 +22,6 @@ export class RevlistComponent implements OnInit {
   private revStatusMap: { [key: number]: RevStatus};
   private revDurationMap: { [key: number]: RevDuration};
 
-
   // List Size
   private listSize: number;
 
@@ -35,43 +35,32 @@ export class RevlistComponent implements OnInit {
 
   constructor(
     private apiAgentService: ApiAgentService,
-    private repositorySettingService: RepositorySettingService
+    private repositorySettingService: RepositorySettingService,
+    private repositoryReservationService: RepositoryReservationService
     ) {
+
+    setTimeout(() => this.refreshPage(), 2000);
+
     // Default Page No
     this.curPageNo = 1;
 
     // List Size
     this.listSize = 4;
 
-    // Direct read data from API
-    apiAgentService.aGet<Reservation[]>('revList')
-    .subscribe( data => {
-      this.revList = data;
-      this.refreshPage();
-     });
+    // Reservation Records
+    this.revList = this.repositoryReservationService.reservationList;
 
-     // Setting - RevStatus
-     this.revStatusMap = this.repositorySettingService.revStatusMap;
-    // apiAgentService.aGet<{ [key: number]: RevStatus}>('settingRSMap')
-    // .subscribe(
-    //   data => {
-    //     this.revStatusMap = data;
-    //     this.refreshPage();
-    //   }
-    // );
+    // Setting - RevStatus
+    this.revStatusMap = this.repositorySettingService.revStatusMap;
 
     // Setting - RevDuration
     this.revDurationMap = this.repositorySettingService.revDurationMap;
-    // apiAgentService.aGet<{ [key: number]: RevDuration}>('settingRDMap')
-    // .subscribe(
-    //   data => {
-    //     this.revDurationMap = data;
-    //     this.refreshPage();
-    //   }
-    // );
+
+   
   }
 
   ngOnInit() {
+    this.refreshPage();
   }
 
   setPage(pageNo: number): void {
@@ -80,6 +69,15 @@ export class RevlistComponent implements OnInit {
   }
 
   refreshPage(): void {
+    // Reservation Records
+    this.revList = this.repositoryReservationService.reservationList;
+
+    // Setting - RevStatus
+    this.revStatusMap = this.repositorySettingService.revStatusMap;
+
+    // Setting - RevDuration
+    this.revDurationMap = this.repositorySettingService.revDurationMap;
+
     //
     this.totPageNo = Math.ceil(this.revList.length / this.listSize);
     this.seqFrom = ( this.curPageNo - 1 ) * this.listSize;
