@@ -10,7 +10,6 @@ export class LoginService {
     private loginStatus: boolean;
 
     constructor(
-        private apiAgentService: ApiAgentService,
         private repositoryService: RepositoryService
     ) {
 
@@ -35,10 +34,12 @@ export class LoginService {
 
         // for User
         if ( this.isAdmin() ) {
+            this.repositoryService.syncUpAdminData();
         }
 
         // for User
         if ( this.isMasg() ) {
+            this.repositoryService.syncUpMasgData();
         }
 
         // for User
@@ -54,10 +55,12 @@ export class LoginService {
 
         // for User
         if ( this.isAdmin() ) {
+            this.repositoryService.cleanAdminData();
         }
 
         // for User
         if ( this.isMasg() ) {
+            this.repositoryService.cleanMasgData();
         }
 
         // for User

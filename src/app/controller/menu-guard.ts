@@ -10,7 +10,7 @@ export class MenuGuard implements CanActivate {
 
     //
     canActivate(): boolean {
-        return this.loginServiceImpl.isLogin();
+        return this.loginServiceImpl.isUser();
     }
 }
 

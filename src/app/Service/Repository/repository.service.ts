@@ -17,20 +17,39 @@ export class RepositoryService {
   ) { }
 
   // Sync up Data from API Server
-  syncUpSetting(): void {
-    this.repositorySettingService.syncUp();
-  }
+    syncUpSetting(): void {
+      this.repositorySettingService.syncUp();
+    }
 
-  syncUpUserData(): void {
-    this.repositoryReservationService.syncUp();
+  // 
+    syncUpUserData(): void {
+      this.repositoryReservationService.syncUp();
 
-    this.repositoryRevPanelService.syncUp();
-  }
+      this.repositoryRevPanelService.syncUp();
+    }
+
+  // 
+    syncUpAdminData(): void {
+    }
+
+  // 
+    syncUpMasgData(): void {
+    }
 
   //
-  cleanUserData(): void {
-    this.repositoryReservationService.clean();
-    this.repositoryRevPanelService.clean();
+    cleanUserData(): void {
+      this.repositoryReservationService.clean();
+      this.repositoryRevPanelService.clean();
 
-  }
+    }
+
+  //
+    cleanAdminData(): void {
+
+    }
+
+  //
+    cleanMasgData(): void {
+
+    }
 }
