@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-rev-panel-date-item-masg-panel',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RevPanelDateItemMasgPanelComponent implements OnInit {
 
+  @Input() private revMasg: string;
   constructor() { }
 
   ngOnInit() {

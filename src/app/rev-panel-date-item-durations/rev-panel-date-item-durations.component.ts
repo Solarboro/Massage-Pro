@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { RevDuration } from '../model/setting/rev-duration';
+import { Reservation } from '../model/reservation';
 
 @Component({
   selector: 'app-rev-panel-date-item-durations',
@@ -14,23 +15,30 @@ export class RevPanelDateItemDurationsComponent implements OnInit {
 
   @Input() private revDuration: RevDuration;
   @Input() private seqNo: number;
+  @Input() private reservation: Reservation;
 
   // 
-  private onRevEvent: EventEmitter<RevDuration>;
-  
+  private onRevEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
   constructor() {
-    this.onRevEvent = new EventEmitter<RevDuration>();
    }
 
   ngOnInit() {
   }
 
-  onRevClick(): void {
-    this.onRevEvent.emit(this.revDuration);
+  onDuration(): void {
+    const reservation: Reservation = new Reservation();
+    reservation.revTime = this.seqNo;
+
+    reservation.revFloor = '13 F';
+    reservation.revBuilding = 'Xin Yuan';
+    reservation.revComment = false;
+    reservation.revStatus = 1;
+
+    this.onRevEvent.emit(reservation);
   }
 
   isDisalbe() {
-    return this.seqNo == 2;
+    return this.reservation != null;
   }
 
 }

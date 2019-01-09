@@ -31,6 +31,9 @@ export class ApiAgentService {
       this.urlMap['revList'] = 'http://localhost:8080/rev/find';
       this.urlMap['revSave'] = 'http://localhost:8080/rev/save';
 
+      // Rev Panel
+      this.urlMap['revPanel'] = 'http://localhost:8080/rev/revpanel';
+
       // Setting - RevStatus
       this.urlMap['settingRSMap'] = 'http://localhost:8080/setting/map/revstatus';
       this.urlMap['settingRSList'] = 'http://localhost:8080/setting/revstatus/find';
@@ -41,6 +44,10 @@ export class ApiAgentService {
       this.urlMap['settingRDList'] = 'http://localhost:8080/setting/revduration/find';
       this.urlMap['settingRDSave'] = 'http://localhost:8080/setting/revduration/save';
 
+
+      // Test URL
+      this.urlMap['getOne'] = 'http://localhost:8080/test/getone';
+      this.urlMap['dateSave'] = 'http://localhost:8080/test/saveone';
     }
 
   // URL Mapping

@@ -15,7 +15,14 @@ export class RepositorySettingService {
   constructor(
     private apiAgentService: ApiAgentService
   ) {
+    // 
+    this.revDurationMap = {};
 
+    // 
+    this.revDurationList = [];
+
+    // 
+    this.revStatusMap = {};
    }
 
   //  Clean Data

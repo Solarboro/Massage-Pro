@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../Service/login-service';
 
 @Component({
   selector: 'app-rev-panel',
@@ -10,7 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RevPanelComponent implements OnInit {
 
-  constructor() {
+  private username: string;
+  constructor(
+    private loginService: LoginService
+  ) {
+    this.username = this.loginService.getUsername();
    }
 
   ngOnInit() {

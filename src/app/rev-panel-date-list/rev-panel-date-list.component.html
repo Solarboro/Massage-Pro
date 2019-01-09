@@ -1,2 +1,5 @@
-<app-rev-panel-date-item></app-rev-panel-date-item>
-<app-rev-panel-date-item></app-rev-panel-date-item>
+<app-rev-panel-date-item
+    *ngFor="let revMasg of this.revPanel.revMasgList"
+    [revPanelItem]="this.revPanel.revPanelItemMap[revMasg]"
+    (onRevEvent)="onNewRev($event)"
+></app-rev-panel-date-item>

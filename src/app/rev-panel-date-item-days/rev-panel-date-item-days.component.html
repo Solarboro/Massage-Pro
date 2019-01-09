@@ -1,5 +1,5 @@
 <div class="ui horizontal divider">
-  Day N
+  {{ revDate }}
 </div>
 
 <div class="ui list">
@@ -8,8 +8,9 @@
   <app-rev-panel-date-item-durations
     *ngFor="let revDM of revDurationList; let seqNo = index"
     [revDuration]="revDM"
-    [seqNo]="seqNo"
-    (onRevEvent)="onDurationRevEvent($event)"
+    [seqNo]="seqNo+1"
+    [reservation]="reservationMap[seqNo+1]"
+    (onRevEvent)="onDay($event)"
   ></app-rev-panel-date-item-durations>
 
 </div>

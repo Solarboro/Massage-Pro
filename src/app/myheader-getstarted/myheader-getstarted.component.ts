@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reservation } from '../model/reservation';
 import { ApiAgentService } from '../Service/api-agent.service';
+import { RevPanel } from '../model/rev-panel';
 
 @Component({
   selector: 'app-myheader-getstarted',
@@ -31,6 +32,15 @@ export class MyheaderGetstartedComponent implements OnInit {
 
     // post
     // this.testOnApiAgent(2);
+
+    // test on date
+    // this.testOnDate();
+
+    // 
+    // this.testOnArray();
+
+    // 
+    this.testOnRevPanelData();
   }
 
   postRev(): void {
@@ -80,6 +90,38 @@ export class MyheaderGetstartedComponent implements OnInit {
       this.apiAgentService.aPost<Reservation>('revSave', myRev)
       .subscribe( data => console.log(data) );
     }
+  }
+
+
+  // test on date
+  testOnDate(): void {
+    let toDay: Date = new Date();
+
+    console.log('Start Post' + toDay);
+    this.apiAgentService.aPost<Date>('dateSave', toDay)
+      .subscribe( date => console.log(date) );
+    console.log('End Post');
+      
+    
+    // this.apiAgentService.aGet<Date>('getOne')
+    //   .subscribe( data => console.log(data) );
+  
+  }
+
+  // Test on Array
+  testOnArray(): void {
+    let myString: string[] = {};
+
+    // myString.forEach(
+    //   str => console.log(str)
+    // );
+    
+  }
+
+  // 
+  testOnRevPanelData(): void {
+    this.apiAgentService.aGet<RevPanel>('revPanel')
+      .subscribe( data => console.log(data) );
   }
 
 }
