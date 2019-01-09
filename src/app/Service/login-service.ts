@@ -28,10 +28,42 @@ export class LoginService {
         return this.loginStatus;
     }
 
+    public login(loginStatus: boolean, masgUser: MasgUser): void {
+        // 
+        this.loginStatus = loginStatus;
+        this.masgUser = masgUser;
+
+        // for User
+        if ( this.isAdmin() ) {
+        }
+
+        // for User
+        if ( this.isMasg() ) {
+        }
+
+        // for User
+        if ( this.isUser() ) {
+            this.repositoryService.syncUpUserData();
+        }
+
+    }
+
     public logout(): void {
         this.loginStatus = false;
         this.masgUser = null;
-        this.repositoryService.cleanUserData();
+
+        // for User
+        if ( this.isAdmin() ) {
+        }
+
+        // for User
+        if ( this.isMasg() ) {
+        }
+
+        // for User
+        if ( this.isUser() ) {
+            this.repositoryService.cleanUserData();
+        }
     }
 
     public getUsername(): string {
@@ -44,6 +76,10 @@ export class LoginService {
 
     public isMasg(): boolean {
         return this.masgUser.role === 'masg';
+    }
+
+    public isUser(): boolean {
+        return this.masgUser.role === 'user';
     }
 
 }
