@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
-import { ApiAgentService } from '../api-agent.service';
 import { RepositorySettingService } from './repository-setting.service';
 import { RepositoryReservationService } from './repository-reservation.service';
 import { RepositoryRevPanelService } from './repository-rev-panel.service';
+import { RepositoryMasgReservationService } from './repository-masg-reservation.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RepositoryService {
 
+  public masgPDFPara: string;
+
   constructor(
+    // User
     private repositorySettingService: RepositorySettingService,
     private repositoryReservationService: RepositoryReservationService,
-    private repositoryRevPanelService: RepositoryRevPanelService
+    private repositoryRevPanelService: RepositoryRevPanelService,
+
+    // Masg
+    private repositoryMasgReservationService: RepositoryMasgReservationService
 
   ) { }
 
@@ -34,6 +40,8 @@ export class RepositoryService {
 
   // 
     syncUpMasgData(): void {
+      this.repositoryMasgReservationService.para = this.masgPDFPara;
+      this.repositoryMasgReservationService.syncUp();
     }
 
   //
@@ -50,6 +58,6 @@ export class RepositoryService {
 
   //
     cleanMasgData(): void {
-
+      this.repositoryMasgReservationService.clean();
     }
 }

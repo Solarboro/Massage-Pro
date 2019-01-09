@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../Service/login-service';
+import { UserService } from '../Service/user.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { LoginService } from '../Service/login-service';
 export class MyheaderMenuUcpComponent implements OnInit {
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private userService: UserService
   ) {
 
   }

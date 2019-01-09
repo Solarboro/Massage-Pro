@@ -1,40 +1,40 @@
 import { Injectable } from '@angular/core';
-import { LoginService } from '../Service/login-service';
 import { CanActivate } from '@angular/router';
+import { UserService } from '../Service/user.service';
 
 @Injectable()
 export class MenuGuard implements CanActivate {
-    constructor(private loginServiceImpl: LoginService) {
+    constructor(private userService: UserService) {
 
     }
 
     //
     canActivate(): boolean {
-        return this.loginServiceImpl.isUser();
+        return this.userService.isUser();
     }
 }
 
 @Injectable()
 export class MenuGuardAdmin implements CanActivate {
-    constructor(private loginServiceImpl: LoginService) {
+    constructor(private userService: UserService) {
 
     }
 
     //
     canActivate(): boolean {
-        return this.loginServiceImpl.isAdmin();
+        return this.userService.isAdmin();
     }
 }
 
 @Injectable()
 export class MenuGuardMasg implements CanActivate {
-    constructor(private loginServiceImpl: LoginService) {
+    constructor(private userService: UserService) {
 
     }
 
     //
     canActivate(): boolean {
-        return this.loginServiceImpl.isMasg();
+        return this.userService.isMasg();
     }
 }
 

@@ -3,20 +3,23 @@ import { ApiAgentService } from './api-agent.service';
 import { MasgUser } from '../model/masg-user';
 import { Observable } from 'rxjs';
 import { RepositoryService } from './Repository/repository.service';
+import { UserService } from './user.service';
 
 @Injectable()
 export class LoginService {
-    private masgUser: MasgUser = {};
     private loginStatus: boolean;
+    private searchDate: string;
 
     constructor(
+        private userService: UserService,
         private repositoryService: RepositoryService
     ) {
-
+        // 
+        this.calSearchDate();
     }
 
     public setMasgUser( masgUser: MasgUser): void {
-        this.masgUser = masgUser;
+        this.userService.masgUser = masgUser;
     }
 
     public setLoginStatus( loginStatus: boolean ): void {
@@ -30,20 +33,24 @@ export class LoginService {
     public login(loginStatus: boolean, masgUser: MasgUser): void {
         // 
         this.loginStatus = loginStatus;
-        this.masgUser = masgUser;
+        this.userService.masgUser = masgUser;
 
-        // for User
-        if ( this.isAdmin() ) {
+        // for Admin
+        if ( this.userService.isAdmin() ) {
             this.repositoryService.syncUpAdminData();
         }
 
-        // for User
-        if ( this.isMasg() ) {
+        // for Masg
+        if ( this.userService.isMasg() ) {
+            this.repositoryService.masgPDFPara = '?revMasg='
+            + this.userService.getUsername()
+            + '&revDate='
+            + this.searchDate;
             this.repositoryService.syncUpMasgData();
         }
 
         // for User
-        if ( this.isUser() ) {
+        if ( this.userService.isUser() ) {
             this.repositoryService.syncUpUserData();
         }
 
@@ -51,38 +58,29 @@ export class LoginService {
 
     public logout(): void {
         this.loginStatus = false;
-        this.masgUser = {};
+        this.userService.masgUser = null;
 
         // for User
-        if ( this.isAdmin() ) {
+        if ( this.userService.isAdmin() ) {
             this.repositoryService.cleanAdminData();
         }
 
         // for User
-        if ( this.isMasg() ) {
+        if ( this.userService.isMasg() ) {
             this.repositoryService.cleanMasgData();
         }
 
         // for User
-        if ( this.isUser() ) {
+        if ( this.userService.isUser() ) {
             this.repositoryService.cleanUserData();
         }
     }
 
-    public getUsername(): string {
-        return this.masgUser.username;
-    }
+    calSearchDate(): void {
+        const toDay: Date = new Date();
+        const month: string = ('0' + (toDay.getMonth() + 1)).slice(-2);
+        const day: string = ('0' + toDay.getDate()).slice(-2);
 
-    public isAdmin(): boolean {
-        return this.masgUser.role === 'admin';
+        this.searchDate = toDay.getFullYear() + '-' + month + '-' + day;
     }
-
-    public isMasg(): boolean {
-        return this.masgUser.role === 'masg';
-    }
-
-    public isUser(): boolean {
-        return this.masgUser.role === 'user';
-    }
-
 }

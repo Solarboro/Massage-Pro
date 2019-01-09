@@ -1,2 +1,65 @@
-<app-reservation-panel2-masg-list-item></app-reservation-panel2-masg-list-item>
-<app-reservation-panel-item></app-reservation-panel-item>
+<div class="ui raised segment" id="revitem"
+    [ngClass]="statusColor">
+
+  <!-- Cancel / Comment Button -->
+    <button class="ui tiny right floated icon button" 
+           (click)="revFinish()">
+      <i class="icon check"></i>
+    </button>
+
+    
+    <button class="ui tiny right floated icon button"
+            (click)="revNoShow()">
+      <i class="icon close"></i>
+    </button>
+
+  <!-- Massgist Info -->
+    <div class="ui grey basic left floated header">
+      <i class="icon user"></i>
+      {{ revItem.uid }}
+    </div>
+
+  <!-- Divider -->
+    <div class="ui horizontal clearing divider">
+      <label class="ui medium label" [ngClass]="statusColor">
+        {{ statusDesc }} 
+      </label>
+    </div>
+
+  <!-- Rev Date Time and Location -->
+    <div class="ui equal width stackable grid">
+
+      <!-- Time -->
+      <div class="column">
+        <label class="ui fluid icon basic grey label">
+          <i class="icon clock"></i>
+          {{ revTimeDesc }}
+        </label>
+      </div>
+
+      <!-- Date -->
+      <div class="column">
+        <label class="ui fluid icon basic grey label">
+          <i class="icon calendar"></i>
+          {{ revItem.revDate }}
+        </label>
+      </div>
+
+      <!-- Floor -->
+      <div class="column">
+        <label class="ui fluid icon basic grey label">
+          <i class="icon flag"></i>
+          {{ revItem.revFloor }} F
+        </label>
+      </div>
+
+      <!-- Building -->
+      <div class="column">
+        <label class="ui fluid icon basic grey label">
+          <i class="icon building"></i>
+          {{ revItem.revBuilding }}
+        </label>
+      </div>
+  </div>
+
+</div>

@@ -8,7 +8,7 @@ import { RevDuration } from '../model/setting/rev-duration';
   selector: 'app-revitem',
   templateUrl: './revitem.component.html',
   styleUrls: ['./revitem.component.css'],
-  outputs: [ 'onCommentEvent', 'onCancelEvent', 'onNoShowEvent', 'onFinishEvent' ]
+  outputs: [ 'onCommentEvent', 'onCancelEvent' ]
 })
 export class RevitemComponent implements OnInit {
   @Input() revItem: Reservation;
@@ -27,8 +27,6 @@ export class RevitemComponent implements OnInit {
   // 
   private onCommentEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
   private onCancelEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
-  private onNoShowEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
-  private onFinishEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
   
 
   constructor(private apiAgentService: ApiAgentService) {
@@ -55,11 +53,5 @@ export class RevitemComponent implements OnInit {
   }
   revCancel(): void {
     this.onCancelEvent.emit(this.revItem);
-  }
-  revNoShow(): void {
-    this.onNoShowEvent.emit(this.revItem);
-  }
-  revFinish(): void {
-    this.onFinishEvent.emit(this.revItem);
   }
 }

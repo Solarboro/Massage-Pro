@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../Service/login-service';
+import { UserService } from '../Service/user.service';
 
 @Component({
   selector: 'app-rev-panel',
@@ -13,9 +14,9 @@ export class RevPanelComponent implements OnInit {
 
   private username: string;
   constructor(
-    private loginService: LoginService
+    private userService: UserService
   ) {
-    this.username = this.loginService.getUsername();
+    this.username = this.userService.getUsername();
    }
 
   ngOnInit() {

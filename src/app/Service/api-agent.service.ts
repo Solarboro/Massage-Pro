@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginService } from './login-service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class ApiAgentService {
   private urlMap: { [key: string]: string };
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private userService: UserService
   ) {
     // Init Reqest Header
       // Token / APIKey
@@ -37,6 +39,9 @@ export class ApiAgentService {
       this.urlMap['revChangeToCancelled'] = 'http://localhost:8080/rev/change/4';
       this.urlMap['revChangeToNoShow'] = 'http://localhost:8080/rev/change/3';
       this.urlMap['revChangeToFinished'] = 'http://localhost:8080/rev/change/2';
+
+      // Masg Reservation
+      this.urlMap['revList2Masg'] = 'http://localhost:8080/rev/2masg';
 
       // Rev Panel
       this.urlMap['revPanel'] = 'http://localhost:8080/rev/revpanel';
@@ -72,6 +77,12 @@ export class ApiAgentService {
     public aPost<T>(urlCode: string, requestBody: T): Observable<T> {
 
       return this.httpClient.post<T>(this.getUrl(urlCode), requestBody, {headers: this.requestHeader});
+    }
+
+  // Common HTTP Get Request
+    public aGetWP<T>(urlCode: string, para: string): Observable<T> {
+
+      return this.httpClient.get<T>(this.getUrl(urlCode) + para, {headers: this.requestHeader});
     }
 
 }

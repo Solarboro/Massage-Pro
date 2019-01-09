@@ -1,5 +1,5 @@
 <div class="ui text container">
-  <!-- Header -->
+    <!-- Header -->
     <div class="ui dividing header">
       <i class="icon list"></i>
       <div class="content">
@@ -10,13 +10,47 @@
       </div>
     </div>
   
-  <!-- Date Panel -->
-    <div class="ui icon input">
-      <i class="icon search"></i>
-      <input type="Date" />
+          
+      <!--  -->
+      <button class="ui mini icon button" 
+        (click)="manuallyUpdate()"
+        title="Manually Update, Please Click This button">
+        <i class="icon refresh"></i>
+        {{ "Updated on: " + ltsTimeStamp.toUTCString() }}
+      </button>
+  
+  
+    <div class="ui hidden divider"></div>
+    <!--  -->
+    <div class="ui action input">
+        <input type="date" #searchDate>
+        <button class="ui teal right labeled icon button"
+          (click)="processSearchEvent(searchDate.value)"
+        >
+          <i class="icon search"></i>
+          Search
+        </button>
     </div>
 
-  <!-- Detial Panel -->
-    <app-reservation-panel2-masg-list></app-reservation-panel2-masg-list>
-
-</div>
+    <!-- No Record Found -->
+    <div class="ui positive icon message" *ngIf="revList.length == 0">
+        <i class="inbox icon"></i>
+        <div class="content">
+          <div class="header">No Record Found</div>
+        </div>
+    </div>
+    
+    <!-- Record Found -->
+    <div *ngIf="revList.length != 0">
+      <app-reservation-panel2-masg-list
+        *ngFor="let revItem of revList; let seqNo = index"
+        [revItem]="revItem"
+        [revStatusMap]="revStatusMap"
+        [revDurationMap]="revDurationMap"
+        (onNoShowEvent)="processNoShowEvent($event)"
+        (onFinishEvent)="processFinishEvent($event)"
+        >
+      </app-reservation-panel2-masg-list>
+  
+  
+  </div>

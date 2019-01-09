@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from '../model/reservation';
-import { ApiAgentService } from '../Service/api-agent.service';
 import { RevStatus } from '../model/setting/rev-status';
 import { RevDuration } from '../model/setting/rev-duration';
 import { RepositorySettingService } from '../Service/Repository/repository-setting.service';
 import { RepositoryReservationService } from '../Service/Repository/repository-reservation.service';
-import { timeout } from 'q';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -134,13 +132,4 @@ export class RevlistComponent implements OnInit {
     this.repositoryReservationService.aCancelled(reservation);
 
   }
-  processNoShowEvent(reservation: Reservation): void {
-    this.repositoryReservationService.aNoShow(reservation);
-
-  }
-  processFinishEvent(reservation: Reservation): void {
-    this.repositoryReservationService.aFinished(reservation);
-
-  }
-  
 }

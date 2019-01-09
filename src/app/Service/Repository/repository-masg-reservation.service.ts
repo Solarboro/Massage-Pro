@@ -2,23 +2,22 @@ import { Injectable } from '@angular/core';
 import { ApiAgentService } from '../api-agent.service';
 import { Reservation } from 'src/app/model/reservation';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { UserService } from '../user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RepositoryReservationService {
+export class RepositoryMasgReservationService {
 
   // Local Data
   public reservationList: Reservation[];
 
-
   // Subject
   public latestRevList: Subject<Reservation[]> = new BehaviorSubject<Reservation[]>(null);
 
+  public para: string;
+
   constructor(
-    private apiAgentService: ApiAgentService,
-    private userService: UserService
+    private apiAgentService: ApiAgentService
   ) {
     // 
     this.reservationList = [];
@@ -32,41 +31,14 @@ export class RepositoryReservationService {
   // Sync up Data from API Server
   syncUp(): void {
     // Direct read data from API
-    this.apiAgentService.aGetWP<Reservation[]>('revList', '/' + this.userService.getUsername())
+    this.apiAgentService.aGetWP<Reservation[]>('revList2Masg', this.para)
     .subscribe( data => {
 
-      // 
+      //
       this.reservationList = data;
 
       // Push subject
       this.latestRevList.next(data);
-    });
-  }
-
-  aSave(reservation: Reservation): void {
-    //
-    this.apiAgentService.aPost<Reservation>('revSave', reservation)
-    .subscribe( data => {
-      this.syncUp();
-    });
-  }
-
-  aComment(reservation: Reservation): void {
-    //
-    console.log('start post');
-    this.apiAgentService.aPost<Reservation>('revChangeToCommented', reservation)
-    .subscribe( data => {
-      console.log('b s post');
-      this.syncUp();
-      console.log('a s post');
-    });
-  }
-
-  aCancelled(reservation: Reservation): void {
-    //
-    this.apiAgentService.aPost<Reservation>('revChangeToCancelled', reservation)
-    .subscribe( data => {
-      this.syncUp();
     });
   }
 
