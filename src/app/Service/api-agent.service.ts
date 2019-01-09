@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LoginService } from './login-service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ export class ApiAgentService {
   // URL Mapping
   private urlMap: { [key: string]: string };
 
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient
+  ) {
     // Init Reqest Header
       // Token / APIKey
       // this.requestHeader['Token'] = 'TBC';

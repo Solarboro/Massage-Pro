@@ -14,12 +14,14 @@ export class RevPanelDateListComponent implements OnInit {
   @Input() private username: string;
 
   private revPanel: RevPanel;
+  private syncFlag: boolean;
 
 
   constructor(
     private repositoryRevPanelService: RepositoryRevPanelService,
     private repositoryReservationService: RepositoryReservationService
   ) {
+
     // Mandatory Frist Read from Storage (pre load already)
       this.revPanel = this.repositoryRevPanelService.revPanel;
 
@@ -27,11 +29,12 @@ export class RevPanelDateListComponent implements OnInit {
       this.repositoryRevPanelService.syncUp();
 
     // Refresh Page with localStorage Data
-      this.SyncUpDataFromLocalStorage();
+    // TODO
    }
 
   SyncUpDataFromLocalStorage(): void {
     //
+    this.syncFlag = true;
     setTimeout(() => {
         this.revPanel = this.repositoryRevPanelService.revPanel;
     }, 3000);

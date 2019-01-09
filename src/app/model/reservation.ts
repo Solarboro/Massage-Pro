@@ -13,8 +13,7 @@ export class Reservation {
     revBuilding: string;
 
     // System Date & Time
-    sysDate: string;
-    sysTime: string;
+    sysDate: Date;
 
 
 }

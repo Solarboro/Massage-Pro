@@ -10,7 +10,6 @@ import { RepositoryRevPanelService } from './repository-rev-panel.service';
 export class RepositoryService {
 
   constructor(
-    private apiAgentService: ApiAgentService,
     private repositorySettingService: RepositorySettingService,
     private repositoryReservationService: RepositoryReservationService,
     private repositoryRevPanelService: RepositoryRevPanelService

@@ -35,10 +35,15 @@ export class RevlistComponent implements OnInit {
   private seqTo: number;
 
   constructor(
-    private apiAgentService: ApiAgentService,
     private repositorySettingService: RepositorySettingService,
     private repositoryReservationService: RepositoryReservationService
     ) {
+
+      // 
+      this.curPageNo = 1;
+
+      // 
+      this.listSize = 4;
 
       // Mandatory Frist Read from Storage (pre load already)
         // Reservation Records
@@ -54,8 +59,8 @@ export class RevlistComponent implements OnInit {
         this.repositorySettingService.syncUp();
         this.repositoryReservationService.syncUp();
 
-      // Refresh Page with localStorage Data
-        this.SyncUpDataFromLocalStorage();
+      // Refresh Page
+      this.refreshPage();
   }
 
   ngOnInit() {
