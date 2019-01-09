@@ -10,6 +10,7 @@ export class RepositorySettingService {
 
   public revStatusMap: { [key: number]: RevStatus};
   public revDurationMap: { [key: number]: RevDuration};
+  public revDurationList: RevDuration[];
 
   constructor(
     private apiAgentService: ApiAgentService
@@ -19,7 +20,13 @@ export class RepositorySettingService {
 
   //  Clean Data
   clean(): void {
+    // 
     this.revDurationMap = {};
+
+    // 
+    this.revDurationList = [];
+
+    // 
     this.revStatusMap = {};
   }
 
@@ -38,6 +45,14 @@ export class RepositorySettingService {
     .subscribe(
       data => {
         this.revDurationMap = data;
+      }
+    );
+
+    // Setting - RevDuration
+    this.apiAgentService.aGet<RevDuration[]>('settingRDList')
+    .subscribe(
+      data => {
+        this.revDurationList = data;
       }
     );
   }

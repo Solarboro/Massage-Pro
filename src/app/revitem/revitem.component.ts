@@ -48,5 +48,5 @@ export class RevitemComponent implements OnInit {
   revComment(): void {
     $('.ui.revcomment.modal').modal('show');
   }
-
+  
 }

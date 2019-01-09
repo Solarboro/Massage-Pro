@@ -30,6 +30,10 @@ import { RevitemDialogCommentComponent } from './revitem-dialog-comment/revitem-
 import { RevitemMsgOntimeComponent } from './revitem-msg-ontime/revitem-msg-ontime.component';
 import { RevitemMsgCommentComponent } from './revitem-msg-comment/revitem-msg-comment.component';
 import { MyheaderSigninPanelComponent } from './myheader-signin-panel/myheader-signin-panel.component';
+import { RevPanelDateItemComponent } from './rev-panel-date-item/rev-panel-date-item.component';
+import { RevPanelDateItemDaysComponent } from './rev-panel-date-item-days/rev-panel-date-item-days.component';
+import { RevPanelDateItemDurationsComponent } from './rev-panel-date-item-durations/rev-panel-date-item-durations.component';
+import { RevPanelDateItemMasgPanelComponent } from './rev-panel-date-item-masg-panel/rev-panel-date-item-masg-panel.component';
 
 registerLocaleData(en);
 
@@ -63,7 +67,11 @@ const myRoutes: Routes = [
     RevitemDialogCommentComponent,
     RevitemMsgOntimeComponent,
     RevitemMsgCommentComponent,
-    MyheaderSigninPanelComponent
+    MyheaderSigninPanelComponent,
+    RevPanelDateItemComponent,
+    RevPanelDateItemDaysComponent,
+    RevPanelDateItemDurationsComponent,
+    RevPanelDateItemMasgPanelComponent
   ],
   imports: [
     BrowserModule,
