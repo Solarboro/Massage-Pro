@@ -40,6 +40,9 @@ export class RevlistComponent implements OnInit {
   private seqFrom: number;
   private seqTo: number;
 
+  // TimeStamp
+  private ltsTimeStamp: Date;
+
   constructor(
     private repositorySettingService: RepositorySettingService,
     private repositoryReservationService: RepositoryReservationService
@@ -57,7 +60,10 @@ export class RevlistComponent implements OnInit {
         .repositoryReservationService
         .latestRevList
         .subscribe(
-          data => this.revList = data
+          data => {
+            this.revList = data;
+            this.ltsTimeStamp = new Date();
+          }
         );
 
       // 
@@ -112,8 +118,29 @@ export class RevlistComponent implements OnInit {
     this.subscriptionRevDurationMap.unsubscribe();
   }
 
-  processCancelEvent(reservation: Reservation): void {
-    this.repositoryReservationService.aCancel(reservation);
+  manuallyUpdate(): void {
+    // 
+    this.repositorySettingService.syncUp();
+
+    // 
+    this.repositoryReservationService.syncUp();
+  }
+
+  processCommentEvent(reservation: Reservation): void {
+    this.repositoryReservationService.aComment(reservation);
 
   }
+  processCancelEvent(reservation: Reservation): void {
+    this.repositoryReservationService.aCancelled(reservation);
+
+  }
+  processNoShowEvent(reservation: Reservation): void {
+    this.repositoryReservationService.aNoShow(reservation);
+
+  }
+  processFinishEvent(reservation: Reservation): void {
+    this.repositoryReservationService.aFinished(reservation);
+
+  }
+  
 }

@@ -19,6 +19,9 @@ export class RevPanelDateListComponent implements OnInit {
 
   private subscription: Subscription;
 
+  // TimeStamp
+  private ltsTimeStamp: Date;
+
 
   constructor(
     private repositoryRevPanelService: RepositoryRevPanelService,
@@ -31,6 +34,8 @@ export class RevPanelDateListComponent implements OnInit {
                         .subscribe(
                           data => {
                             this.revPanel = data;
+                            this.ltsTimeStamp = new Date();
+                            // this.ltsTimeStamp.toUTCString();
                           }
                         );
 
@@ -51,6 +56,10 @@ export class RevPanelDateListComponent implements OnInit {
 
     // 
     this.subscription.unsubscribe();
+  }
+
+  manuallyUpdate(): void {
+    this.repositoryRevPanelService.syncUp();
   }
 
 }

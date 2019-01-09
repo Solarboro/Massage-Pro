@@ -49,9 +49,36 @@ export class RepositoryReservationService {
     });
   }
 
-  aCancel(reservation: Reservation): void {
+  aComment(reservation: Reservation): void {
     //
-    this.apiAgentService.aPost<Reservation>('revCancel', reservation)
+    console.log('start post');
+    this.apiAgentService.aPost<Reservation>('revChangeToCommented', reservation)
+    .subscribe( data => {
+      console.log('b s post');
+      this.syncUp();
+      console.log('a s post');
+    });
+  }
+
+  aCancelled(reservation: Reservation): void {
+    //
+    this.apiAgentService.aPost<Reservation>('revChangeToCancelled', reservation)
+    .subscribe( data => {
+      this.syncUp();
+    });
+  }
+
+  aNoShow(reservation: Reservation): void {
+    //
+    this.apiAgentService.aPost<Reservation>('revChangeToNoShow', reservation)
+    .subscribe( data => {
+      this.syncUp();
+    });
+  }
+
+  aFinished(reservation: Reservation): void {
+    //
+    this.apiAgentService.aPost<Reservation>('revChangeToFinished', reservation)
     .subscribe( data => {
       this.syncUp();
     });

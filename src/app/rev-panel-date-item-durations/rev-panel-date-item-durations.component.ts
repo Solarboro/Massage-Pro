@@ -29,7 +29,7 @@ export class RevPanelDateItemDurationsComponent implements OnInit {
     const reservation: Reservation = new Reservation();
     reservation.revTime = this.seqNo;
 
-    reservation.revFloor = '13 F';
+    reservation.revFloor = '28ROOM8';
     reservation.revBuilding = 'Xin Yuan';
     reservation.revComment = false;
     reservation.revStatus = 1;

@@ -10,6 +10,16 @@
     </div>
   </div>
 
+        
+    <!--  -->
+    <button class="ui mini icon button" 
+      (click)="manuallyUpdate()"
+      title="Manually Update, Please Click This button">
+      <i class="icon refresh"></i>
+      {{ "Updated on: " + ltsTimeStamp.toUTCString() }}
+    </button>
+
+
   <!-- No Record Found -->
   <div class="ui positive icon message" *ngIf="revList.length == 0">
       <i class="inbox icon"></i>
@@ -29,7 +39,11 @@
       [seqNo]="seqNo"
       [seqFrom]="seqFrom"
       [seqTo]="seqTo"
-      (onCancelEvent)="processCancelEvent($event)">
+      (onCommentEvent)="processCommentEvent($event)"
+      (onCancelEvent)="processCancelEvent($event)"
+      (onNoShowEvent)="processNoShowEvent($event)"
+      (onFinishEvent)="processFinishEvent($event)"
+      >
     </app-revitem>
 
     <app-listcontoller 

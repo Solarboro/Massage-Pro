@@ -19,6 +19,7 @@ export class RevPanelDateItemComponent implements OnInit {
     // this.revPanelItem.revMasg
     // this.revPanelItem.revDateList
     // this.revPanelItem.revDateDetailMap[]
+
   }
 
   ngOnInit() {
