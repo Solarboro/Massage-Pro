@@ -34,6 +34,10 @@ import { RevPanelDateItemComponent } from './rev-panel-date-item/rev-panel-date-
 import { RevPanelDateItemDaysComponent } from './rev-panel-date-item-days/rev-panel-date-item-days.component';
 import { RevPanelDateItemDurationsComponent } from './rev-panel-date-item-durations/rev-panel-date-item-durations.component';
 import { RevPanelDateItemMasgPanelComponent } from './rev-panel-date-item-masg-panel/rev-panel-date-item-masg-panel.component';
+import { ReservationPanel2MasgComponent } from './reservation-panel2-masg/reservation-panel2-masg.component';
+import { ReservationPanel2MasgListComponent } from './reservation-panel2-masg-list/reservation-panel2-masg-list.component';
+import { ReservationPanel2MasgListItemComponent } from './reservation-panel2-masg-list-item/reservation-panel2-masg-list-item.component';
+import { ReservationPanelItemComponent } from './reservation-panel-item/reservation-panel-item.component';
 
 registerLocaleData(en);
 
@@ -44,7 +48,9 @@ const myRoutes: Routes = [
   { path: 'logout', redirectTo: 'home' },
   { path: 'home', component: MyhomeComponent },
   { path: 'newRev', component: RevPanelComponent, canActivate: [MenuGuard]},
-  { path: 'revList', component: RevlistComponent, canActivate: [MenuGuard]}
+  { path: 'revList', component: RevlistComponent, canActivate: [MenuGuard]},
+
+  { path: 'revList2Masg', component: ReservationPanel2MasgComponent, canActivate: [MenuGuardMasg]}
 ];
 
 @NgModule({
@@ -71,7 +77,11 @@ const myRoutes: Routes = [
     RevPanelDateItemComponent,
     RevPanelDateItemDaysComponent,
     RevPanelDateItemDurationsComponent,
-    RevPanelDateItemMasgPanelComponent
+    RevPanelDateItemMasgPanelComponent,
+    ReservationPanel2MasgComponent,
+    ReservationPanel2MasgListComponent,
+    ReservationPanel2MasgListItemComponent,
+    ReservationPanelItemComponent
   ],
   imports: [
     BrowserModule,

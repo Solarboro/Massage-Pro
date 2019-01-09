@@ -44,7 +44,7 @@ export class MyheaderSigninPanelComponent implements OnInit {
 
     this.loginForm = this.fb.group({
       username : [localStorage.getItem('username'), Validators.compose([Validators.required]) ],
-      password : ['', Validators.compose([Validators.required]) ],
+      password : ['abcd1234', Validators.compose([Validators.required]) ],
       remember : [this.remember]
     });
    }

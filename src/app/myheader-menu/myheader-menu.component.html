@@ -26,6 +26,20 @@
       FAQ
     </a>
 
+    <!-- Massgist -->
+    <a class="item" [routerLink]="['revList2Masg']" routerLinkActive="active" *ngIf="menuGuardMasg.canActivate()" >
+        <i class="icon list"></i>
+        Reservation
+    </a>
+
+    <!-- Admin -->
+    <!-- <a class="item" [routerLink]="['']" routerLinkActive="active" *ngIf="menuGuardAdmin.canActivate()" >
+        <i class="icon clock"></i>
+        Change Duration
+    </a> -->
+
+    
+
     <div class="right item">
       <button class="ui inverted basic button" 
               *ngIf="!loginService.isLogin()"
