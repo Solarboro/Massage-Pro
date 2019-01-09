@@ -33,6 +33,7 @@ export class ApiAgentService {
       // Reservation
       this.urlMap['revList'] = 'http://localhost:8080/rev/find';
       this.urlMap['revSave'] = 'http://localhost:8080/rev/save';
+      this.urlMap['revCancel'] = 'http://localhost:8080/rev/cancel';
 
       // Rev Panel
       this.urlMap['revPanel'] = 'http://localhost:8080/rev/revpanel';

@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { RevPanel } from 'src/app/model/rev-panel';
 import { ApiAgentService } from '../api-agent.service';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RepositoryRevPanelService {
+
+  // Subject on Data
+  public latestRevPanel: Subject<RevPanel> = new BehaviorSubject<RevPanel>(null);
   // Local Data
   public revPanel: RevPanel;
 
@@ -27,6 +31,7 @@ export class RepositoryRevPanelService {
     this.apiAgentService.aGet<RevPanel>('revPanel')
     .subscribe( data => {
       this.revPanel = data;
+      this.latestRevPanel.next(data);
     });
   }
 }

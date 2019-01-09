@@ -6,6 +6,7 @@ import { RevDuration } from '../model/setting/rev-duration';
 import { RepositorySettingService } from '../Service/Repository/repository-setting.service';
 import { RepositoryReservationService } from '../Service/Repository/repository-reservation.service';
 import { timeout } from 'q';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-revlist',
@@ -19,9 +20,14 @@ export class RevlistComponent implements OnInit {
   // Rev Records
   private revList: Reservation[] = [];
 
+  private subscriptionRevList: Subscription;
+
   //
   private revStatusMap: { [key: number]: RevStatus};
   private revDurationMap: { [key: number]: RevDuration};
+
+  private subscriptionRevStatusMap: Subscription;
+  private subscriptionRevDurationMap: Subscription;
 
   // List Size
   private listSize: number;
@@ -45,27 +51,41 @@ export class RevlistComponent implements OnInit {
       // 
       this.listSize = 4;
 
-      // Mandatory Frist Read from Storage (pre load already)
-        // Reservation Records
-        this.revList = this.repositoryReservationService.reservationList;
+      // 
+      this.subscriptionRevList =
+        this
+        .repositoryReservationService
+        .latestRevList
+        .subscribe(
+          data => this.revList = data
+        );
 
-        // Setting - RevStatus
-        this.revStatusMap = this.repositorySettingService.revStatusMap;
+      // 
+      this.subscriptionRevStatusMap =
+          this
+          .repositorySettingService
+          .latestRevStatusMap
+          .subscribe(
+            data => this.revStatusMap = data
+          );
 
-        // Setting - RevDuration
-        this.revDurationMap = this.repositorySettingService.revDurationMap;
+      // 
+      this.subscriptionRevDurationMap =
+            this
+            .repositorySettingService
+            .latestRevDurationMap
+            .subscribe(
+              data => this.revDurationMap = data
+            );
 
       // Sync data from Server to localStorage when component activated.
         this.repositorySettingService.syncUp();
         this.repositoryReservationService.syncUp();
-
-      // Refresh Page
-      this.refreshPage();
   }
 
   ngOnInit() {
-    //
-    this.SyncUpDataFromLocalStorage();
+    // Refresh Page
+    this.refreshPage();
   }
 
   setPage(pageNo: number): void {
@@ -80,20 +100,20 @@ export class RevlistComponent implements OnInit {
     this.seqTo = this.curPageNo * this.listSize - 1;
   }
 
-  SyncUpDataFromLocalStorage(): void {
+  ngOnDestroy(): void {
 
-    setTimeout(() => {
-      // Reservation Records
-      this.revList = this.repositoryReservationService.reservationList;
+    //
+    this.subscriptionRevList.unsubscribe();
 
-      // Setting - RevStatus
-      this.revStatusMap = this.repositorySettingService.revStatusMap;
+    // 
+    this.subscriptionRevStatusMap.unsubscribe();
 
-      // Setting - RevDuration
-      this.revDurationMap = this.repositorySettingService.revDurationMap;
+    // 
+    this.subscriptionRevDurationMap.unsubscribe();
+  }
 
-      this.refreshPage();
-    }, 3000);
+  processCancelEvent(reservation: Reservation): void {
+    this.repositoryReservationService.aCancel(reservation);
 
   }
 }

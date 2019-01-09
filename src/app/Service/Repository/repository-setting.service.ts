@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiAgentService } from '../api-agent.service';
 import { RevStatus } from 'src/app/model/setting/rev-status';
 import { RevDuration } from 'src/app/model/setting/rev-duration';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,16 @@ export class RepositorySettingService {
   public revStatusMap: { [key: number]: RevStatus};
   public revDurationMap: { [key: number]: RevDuration};
   public revDurationList: RevDuration[];
+
+  // Subject
+  public latestRevStatusMap: Subject<{ [key: number]: RevStatus}>
+  = new BehaviorSubject<{ [key: number]: RevStatus}>(null);
+
+  public latestRevDurationMap: Subject<{ [key: number]: RevDuration}>
+  = new BehaviorSubject<{ [key: number]: RevDuration}>(null);
+
+  public latestRevDurationList: Subject<RevDuration[]>
+  = new BehaviorSubject<RevDuration[]>(null);
 
   constructor(
     private apiAgentService: ApiAgentService
@@ -44,22 +55,25 @@ export class RepositorySettingService {
     .subscribe(
       data => {
         this.revStatusMap = data;
+        this.latestRevStatusMap.next(data);
       }
     );
 
-    // Setting - RevDuration
+    // Setting - RevDurationMap
     this.apiAgentService.aGet<{ [key: number]: RevDuration}>('settingRDMap')
     .subscribe(
       data => {
         this.revDurationMap = data;
+        this.latestRevDurationMap.next(data);
       }
     );
 
-    // Setting - RevDuration
+    // Setting - RevDurationList
     this.apiAgentService.aGet<RevDuration[]>('settingRDList')
     .subscribe(
       data => {
         this.revDurationList = data;
+        this.latestRevDurationList.next(data);
       }
     );
   }

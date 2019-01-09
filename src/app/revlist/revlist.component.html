@@ -28,7 +28,8 @@
       [revDurationMap]="revDurationMap"
       [seqNo]="seqNo"
       [seqFrom]="seqFrom"
-      [seqTo]="seqTo">
+      [seqTo]="seqTo"
+      (onCancelEvent)="processCancelEvent($event)">
     </app-revitem>
 
     <app-listcontoller 

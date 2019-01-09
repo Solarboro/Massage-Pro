@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Reservation } from '../model/reservation';
 import { RevStatus } from '../model/setting/rev-status';
 import { ApiAgentService } from '../Service/api-agent.service';
@@ -7,7 +7,8 @@ import { RevDuration } from '../model/setting/rev-duration';
 @Component({
   selector: 'app-revitem',
   templateUrl: './revitem.component.html',
-  styleUrls: ['./revitem.component.css']
+  styleUrls: ['./revitem.component.css'],
+  outputs: [ 'onCancelEvent' ]
 })
 export class RevitemComponent implements OnInit {
   @Input() revItem: Reservation;
@@ -22,6 +23,9 @@ export class RevitemComponent implements OnInit {
   private statusColor: string;
   private statusDesc: string;
   private revTimeDesc: string;
+
+  // 
+  private onCancelEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
 
   constructor(private apiAgentService: ApiAgentService) {
   }
@@ -42,7 +46,7 @@ export class RevitemComponent implements OnInit {
   }
 
   revCancel(): void {
-    $('.ui.revcancel.basic.modal').modal('show');
+    this.onCancelEvent.emit(this.revItem);
   }
 
   revComment(): void {

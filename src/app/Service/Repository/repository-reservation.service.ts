@@ -48,4 +48,12 @@ export class RepositoryReservationService {
       this.syncUp();
     });
   }
+
+  aCancel(reservation: Reservation): void {
+    //
+    this.apiAgentService.aPost<Reservation>('revCancel', reservation)
+    .subscribe( data => {
+      this.syncUp();
+    });
+  }
 }
