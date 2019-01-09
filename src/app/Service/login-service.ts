@@ -6,7 +6,7 @@ import { RepositoryService } from './Repository/repository.service';
 
 @Injectable()
 export class LoginService {
-    private masgUser: MasgUser;
+    private masgUser: MasgUser = {};
     private loginStatus: boolean;
 
     constructor(
@@ -51,7 +51,7 @@ export class LoginService {
 
     public logout(): void {
         this.loginStatus = false;
-        this.masgUser = null;
+        this.masgUser = {};
 
         // for User
         if ( this.isAdmin() ) {

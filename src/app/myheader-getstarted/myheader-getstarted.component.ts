@@ -19,6 +19,18 @@ export class MyheaderGetstartedComponent implements OnInit {
   }
 
   getStart(): void {
+
+
+    //  forward to New Rev
+    if ( false ) {
+      // ToDO
+    } else {
+    // forward to Login
+      $('.ui.sidebar')
+      .sidebar('toggle')
+      ;
+    }
+    
     // console.log('start to get request.');
     // this.myhttp.get('http://localhost:8080/rev/find')
     //   .subscribe(
