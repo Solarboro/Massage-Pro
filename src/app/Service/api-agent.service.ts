@@ -32,6 +32,8 @@ export class ApiAgentService {
 
       // Login
       this.urlMap['login'] = 'http://localhost:8080/login';
+      // UserDetial
+      this.urlMap['userDetial'] = 'http://localhost:8080/masguser/detail/specify/';
       // Reservation
       this.urlMap['revList'] = 'http://localhost:8080/rev/find';
       this.urlMap['revSave'] = 'http://localhost:8080/rev/save';

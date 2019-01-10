@@ -1,7 +1,9 @@
 <div class="ui divider" *ngIf="seqNo == 7"></div>
 
-<button class="ui fluid mini teal labeled icon button" 
+<button class="ui fluid mini labeled icon button" 
         [class.disabled]="isDisalbe()"
+        [class.red]="isDisalbe()"
+        [class.teal]="!isDisalbe()"
         (click)="onDuration()">
   <i class="icon clock"></i>
   {{ revDuration.revTimeDesc }}

@@ -6,6 +6,19 @@
             <i class="icon refresh"></i>
             {{ "Updated on: " + ltsTimeStamp.toUTCString() }}
         </button>
+    <!--  -->
+        <label class="ui right floated red label"
+            *ngIf="!revBlkFlag && !revFlag"
+        >
+            New Reservation is not allowed for current Month. ( Maximuam Rev: 2 Rev per Month )
+        </label>
+
+    <!--  -->
+        <label class="ui right floated red label"
+            *ngIf="revBlkFlag"
+        >
+            New Reservation is not allowed. ( Due to recently No Show record )
+        </label>
 
     <!--  -->
         <app-rev-panel-date-item

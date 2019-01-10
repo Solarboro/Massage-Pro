@@ -27,6 +27,9 @@ export class RevlistComponent implements OnInit {
   private subscriptionRevStatusMap: Subscription;
   private subscriptionRevDurationMap: Subscription;
 
+  // Timer to Auto Refresh
+  private timer;
+
   // List Size
   private listSize: number;
 
@@ -82,6 +85,14 @@ export class RevlistComponent implements OnInit {
               data => this.revDurationMap = data
             );
 
+      // Timer to Auto Refresh
+      this.timer = setInterval(
+        () => {
+          this.repositorySettingService.syncUp();
+          this.repositoryReservationService.syncUp();
+        }, 3000
+      );
+
       // Sync data from Server to localStorage when component activated.
         this.repositorySettingService.syncUp();
         this.repositoryReservationService.syncUp();
@@ -114,6 +125,9 @@ export class RevlistComponent implements OnInit {
 
     // 
     this.subscriptionRevDurationMap.unsubscribe();
+
+    // 
+    clearInterval(this.timer);
   }
 
   manuallyUpdate(): void {

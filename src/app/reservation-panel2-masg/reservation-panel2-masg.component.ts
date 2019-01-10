@@ -34,6 +34,9 @@ export class ReservationPanel2MasgComponent implements OnInit {
  // TimeStamp
  private ltsTimeStamp: Date;
 
+ // Timer
+ private timer;
+
  constructor(
    private userService: UserService,
    private repositorySettingService: RepositorySettingService,
@@ -70,6 +73,13 @@ export class ReservationPanel2MasgComponent implements OnInit {
              data => this.revDurationMap = data
            );
 
+     //  
+       this.timer = setInterval(
+         () => {
+            this.repositorySettingService.syncUp();
+            this.repositoryMasgReservationService.syncUp();
+         }, 3000
+       );
      // Sync data from Server to localStorage when component activated.
        this.repositorySettingService.syncUp();
        this.repositoryMasgReservationService.syncUp();
@@ -89,6 +99,10 @@ export class ReservationPanel2MasgComponent implements OnInit {
 
    // 
    this.subscriptionRevDurationMap.unsubscribe();
+
+   //  
+   clearInterval(this.timer);
+   
  }
 
  manuallyUpdate(): void {

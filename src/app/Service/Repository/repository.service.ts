@@ -3,6 +3,8 @@ import { RepositorySettingService } from './repository-setting.service';
 import { RepositoryReservationService } from './repository-reservation.service';
 import { RepositoryRevPanelService } from './repository-rev-panel.service';
 import { RepositoryMasgReservationService } from './repository-masg-reservation.service';
+import { RepositoryMasgUserDetailService } from './repository-masg-user-detail.service';
+import { UserService } from '../user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,14 @@ export class RepositoryService {
 
   public masgPDFPara: string;
 
+  public paraMasgUserDetial: string;
+
   constructor(
+    // 
+    private userService: UserService,
+    // 
+    private repositoryMasgUserDetailService: RepositoryMasgUserDetailService,
+
     // User
     private repositorySettingService: RepositorySettingService,
     private repositoryReservationService: RepositoryReservationService,
@@ -25,6 +34,10 @@ export class RepositoryService {
   // Sync up Data from API Server
     syncUpSetting(): void {
       this.repositorySettingService.syncUp();
+
+      //
+      this.repositoryMasgUserDetailService.para = '/' + this.userService.getUsername();
+      this.repositoryMasgUserDetailService.syncUp();
     }
 
   // 
