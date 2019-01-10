@@ -22,10 +22,11 @@ export class RevPanelDateListComponent implements OnInit {
   private subscription: Subscription;
 
   private masgUserDetail: MasgUserDetail;
-  private submasgUserDetail: Subscription;
+
+  private smasgUserDetail: Subscription;
 
   private revFlag: boolean;
-  private revBlkFlag: boolean;
+  private revBlkFlag: boolean = true;
 
   private timer: Timer;
 
@@ -38,6 +39,19 @@ export class RevPanelDateListComponent implements OnInit {
     private repositoryReservationService: RepositoryReservationService,
     private repositoryMasgUserDetailService: RepositoryMasgUserDetailService
   ) {
+    // Subscrible
+    this.smasgUserDetail = this.repositoryMasgUserDetailService
+            .latestMasgUserDetail
+            .subscribe(
+              data => {
+                this.masgUserDetail = data;
+
+                if ( this.masgUserDetail != null ) {
+                  this.revFlag = this.masgUserDetail.curMthRevTimes >= 2 ? false : true;
+                  this.revBlkFlag = this.masgUserDetail.revBlocked;
+                }
+              }
+            );
 
     // Subscripe
     this.subscription = this.repositoryRevPanelService
@@ -50,18 +64,7 @@ export class RevPanelDateListComponent implements OnInit {
                           }
                         );
 
-    // Subscrible
-    this.submasgUserDetail = this.repositoryMasgUserDetailService
-            .latestMasgUserDetail
-            .subscribe(
-              data => {
-                this.masgUserDetail = data;
 
-                //
-                this.revFlag = this.masgUserDetail.curMthRevTimes >= 2 ? false : true;
-                this.revBlkFlag = this.masgUserDetail.revBlocked;
-              }
-            );
 
     // Timer Auto Refresh
     this.timer = setInterval(
@@ -81,13 +84,23 @@ export class RevPanelDateListComponent implements OnInit {
   }
 
   onNewRev(reservation: Reservation): void {
-    if ( !this.revFlag || this.revBlkFlag) {
-      return;
-    }
-
     reservation.uid = this.username;
-    this.repositoryReservationService.aSave(reservation);
-    this.repositoryRevPanelService.syncUp();
+    //  this.repositoryReservationService.aSave(reservation);
+    //  this.repositoryRevPanelService.syncUp();
+
+    $('.ui.basic.test.modal')
+    .modal({
+      closable  : false,
+      onDeny    : function() {
+
+      },
+      onApprove : () => {
+        this.repositoryReservationService.aSave(reservation);
+        this.repositoryRevPanelService.syncUp();
+        return true;
+      }
+    })
+    .modal('show');
   }
 
   ngOnDestroy(): void {
@@ -96,7 +109,7 @@ export class RevPanelDateListComponent implements OnInit {
     this.subscription.unsubscribe();
 
     //
-    this.submasgUserDetail.unsubscribe();
+    this.smasgUserDetail.unsubscribe();
 
     // 
     clearInterval(this.timer);

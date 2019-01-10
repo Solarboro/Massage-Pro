@@ -12,7 +12,7 @@ export class RevPanelDateItemComponent implements OnInit {
 
   // 
   @Input() private revPanelItem: RevPanelItem;
-
+  @Input() private disableAll: boolean;
   private onRevEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
 
   constructor() {

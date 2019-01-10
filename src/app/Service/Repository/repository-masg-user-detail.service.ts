@@ -21,7 +21,9 @@ export class RepositoryMasgUserDetailService {
   constructor(
     private userService: UserService,
     private apiAgentService: ApiAgentService
-  ) { }
+  ) {
+    this.masgUserDetail = null;
+   }
 
   //  Clean Data
   clean(): void {

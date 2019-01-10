@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { RevDuration } from '../model/setting/rev-duration';
 import { Reservation } from '../model/reservation';
+import { disableBindings } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-rev-panel-date-item-durations',
@@ -16,6 +17,9 @@ export class RevPanelDateItemDurationsComponent implements OnInit {
   @Input() private revDuration: RevDuration;
   @Input() private seqNo: number;
   @Input() private reservation: Reservation;
+  @Input() private disableAll: boolean;
+
+  private btnColor: string;
 
   // 
   private onRevEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
@@ -37,8 +41,15 @@ export class RevPanelDateItemDurationsComponent implements OnInit {
     this.onRevEvent.emit(reservation);
   }
 
-  isDisalbe() {
+  iRed(): boolean {
     return this.reservation != null;
+  }
+  isDisalbe(): boolean {
+    return this.disableAll || this.reservation != null;
+  }
+
+  isDisableAll(): boolean {
+    return this.disableAll;
   }
 
 }

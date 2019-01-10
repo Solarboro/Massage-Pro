@@ -49,9 +49,34 @@ export class RevitemComponent implements OnInit {
 
 
   revComment(): void {
-    this.onCommentEvent.emit(this.revItem);
+    // this.onCommentEvent.emit(this.revItem);
+    $('.ui.basic.test.modal')
+    .modal({
+      closable  : false,
+      onDeny    : function() {
+
+      },
+      onApprove : () => {
+        this.onCommentEvent.emit(this.revItem);
+        return true;
+      }
+    })
+    .modal('show');
   }
   revCancel(): void {
-    this.onCancelEvent.emit(this.revItem);
+    // this.onCancelEvent.emit(this.revItem);
+    $('.ui.basic.test.modal')
+    .modal({
+      closable  : false,
+      onDeny    : function() {
+        return true;
+
+      },
+      onApprove : () => {
+        this.onCancelEvent.emit(this.revItem);
+        return true;
+      }
+    })
+    .modal('show');
   }
 }

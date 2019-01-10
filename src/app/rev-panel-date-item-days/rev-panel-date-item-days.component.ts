@@ -16,6 +16,7 @@ export class RevPanelDateItemDaysComponent implements OnInit {
 
   // 
   @Input() private revDate: string;
+  @Input() private disableAll: boolean;
   @Input() private reservationMap: { [key: number]: Reservation };
 
   private onRevEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();

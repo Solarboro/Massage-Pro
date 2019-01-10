@@ -15,14 +15,17 @@
 
     <!--  -->
         <label class="ui right floated red label"
-            *ngIf="revBlkFlag"
+            *ngIf="revBlkFlag "
         >
-            New Reservation is not allowed. ( Due to recently No Show record )
+            New Reservation is not allowed.
+            ( Due to recently No Show record. 
+            From {{ masgUserDetail.revBlockedDate }} to {{ masgUserDetail.revReleaseDate}} )
         </label>
-
     <!--  -->
         <app-rev-panel-date-item
             *ngFor="let revMasg of this.revPanel.revMasgList"
             [revPanelItem]="this.revPanel.revPanelItemMap[revMasg]"
             (onRevEvent)="onNewRev($event)"
+            [disableAll]="!this.revFlag || this.revBlkFlag"
         ></app-rev-panel-date-item>
+
