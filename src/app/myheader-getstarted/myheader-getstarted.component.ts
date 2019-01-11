@@ -122,7 +122,7 @@ export class MyheaderGetstartedComponent implements OnInit {
 
   // Test on Array
   testOnArray(): void {
-    let myString: string[] = {};
+    let myString: string[] = [];
 
     // myString.forEach(
     //   str => console.log(str)

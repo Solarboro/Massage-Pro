@@ -31,37 +31,37 @@ export class ApiAgentService {
       this.urlMap = {};
 
       // Login
-      this.urlMap['login'] = 'http://localhost:8080/login';
+      this.urlMap['login'] = 'https://128.236.224.108/login';
       // UserDetial
-      this.urlMap['userDetial'] = 'http://localhost:8080/masguser/detail/specify/';
+      this.urlMap['userDetial'] = 'https://128.236.224.108/masguser/detail/specify/';
       // Reservation
-      this.urlMap['revList'] = 'http://localhost:8080/rev/find';
-      this.urlMap['revSave'] = 'http://localhost:8080/rev/save';
-      this.urlMap['revChangeToCommented'] = 'http://localhost:8080/rev/change/5';
-      this.urlMap['revChangeToCancelled'] = 'http://localhost:8080/rev/change/4';
-      this.urlMap['revChangeToNoShow'] = 'http://localhost:8080/rev/change/3';
-      this.urlMap['revChangeToFinished'] = 'http://localhost:8080/rev/change/2';
+      this.urlMap['revList'] = 'https://128.236.224.108/rev/find';
+      this.urlMap['revSave'] = 'https://128.236.224.108/rev/save';
+      this.urlMap['revChangeToCommented'] = 'https://128.236.224.108/rev/change/5';
+      this.urlMap['revChangeToCancelled'] = 'https://128.236.224.108/rev/change/4';
+      this.urlMap['revChangeToNoShow'] = 'https://128.236.224.108/rev/change/3';
+      this.urlMap['revChangeToFinished'] = 'https://128.236.224.108/rev/change/2';
 
       // Masg Reservation
-      this.urlMap['revList2Masg'] = 'http://localhost:8080/rev/2masg';
+      this.urlMap['revList2Masg'] = 'https://128.236.224.108/rev/2masg';
 
       // Rev Panel
-      this.urlMap['revPanel'] = 'http://localhost:8080/rev/revpanel';
+      this.urlMap['revPanel'] = 'https://128.236.224.108/rev/revpanel';
 
       // Setting - RevStatus
-      this.urlMap['settingRSMap'] = 'http://localhost:8080/setting/map/revstatus';
-      this.urlMap['settingRSList'] = 'http://localhost:8080/setting/revstatus/find';
-      this.urlMap['settingRSSave'] = 'http://localhost:8080/setting/revstatus/save';
+      this.urlMap['settingRSMap'] = 'https://128.236.224.108/setting/map/revstatus';
+      this.urlMap['settingRSList'] = 'https://128.236.224.108/setting/revstatus/find';
+      this.urlMap['settingRSSave'] = 'https://128.236.224.108/setting/revstatus/save';
 
       // Setting - RevDuration
-      this.urlMap['settingRDMap'] = 'http://localhost:8080/setting/map/revduration';
-      this.urlMap['settingRDList'] = 'http://localhost:8080/setting/revduration/find';
-      this.urlMap['settingRDSave'] = 'http://localhost:8080/setting/revduration/save';
+      this.urlMap['settingRDMap'] = 'https://128.236.224.108/setting/map/revduration';
+      this.urlMap['settingRDList'] = 'https://128.236.224.108/setting/revduration/find';
+      this.urlMap['settingRDSave'] = 'https://128.236.224.108/setting/revduration/save';
 
 
       // Test URL
-      this.urlMap['getOne'] = 'http://localhost:8080/test/getone';
-      this.urlMap['dateSave'] = 'http://localhost:8080/test/saveone';
+      this.urlMap['getOne'] = 'https://128.236.224.108/test/getone';
+      this.urlMap['dateSave'] = 'https://128.236.224.108/test/saveone';
     }
 
   // URL Mapping
