@@ -17,7 +17,10 @@ export class MyheaderMenuComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-
+    // fix main menu to page on passing
+    $('.main.menu').visibility({
+      type: 'fixed'
+    });
   }
 
   showLoginPanel(): void {
