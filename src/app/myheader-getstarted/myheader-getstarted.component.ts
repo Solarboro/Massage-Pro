@@ -52,7 +52,10 @@ export class MyheaderGetstartedComponent implements OnInit {
     // this.testOnArray();
 
     // 
-    this.testOnRevPanelData();
+    // this.testOnRevPanelData();
+
+    // get host
+    // this.getCurrentHost();
   }
 
   postRev(): void {
@@ -134,6 +137,24 @@ export class MyheaderGetstartedComponent implements OnInit {
   testOnRevPanelData(): void {
     this.apiAgentService.aGet<RevPanel>('revPanel')
       .subscribe( data => console.log(data) );
+  }
+
+  getCurrentHost(): void {
+    console.log('location.host: ' + location.host);
+    
+    console.log('location.hostname: ' + location.hostname);
+
+    
+    console.log('location.protocol: ' + location.protocol);
+
+    
+    console.log('location.pathname: ' + location.pathname);
+
+    
+    console.log('location.origin: ' + location.origin);
+
+    
+    console.log('location.hash: ' + location.hash);
   }
 
 }

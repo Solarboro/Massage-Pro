@@ -15,6 +15,9 @@ export class ApiAgentService {
   // URL Mapping
   private urlMap: { [key: string]: string };
 
+  private hostname: string;
+  private protocol: string;
+  private origin: string;
   constructor(
     private httpClient: HttpClient,
     private userService: UserService
@@ -22,6 +25,13 @@ export class ApiAgentService {
     // Init Reqest Header
       // Token / APIKey
       // this.requestHeader['Token'] = 'TBC';
+      // Set Origin
+ 
+      // Individual mode 
+      this.origin = 'https://localhost';
+
+      // Intergration Mode
+      // this.origin = location.protocol + '//' + location.hostname;
 
       // Accept Type & Content Type
       this.requestHeader['Accept'] = 'application/json;charset=UTF-8';
@@ -31,37 +41,37 @@ export class ApiAgentService {
       this.urlMap = {};
 
       // Login
-      this.urlMap['login'] = 'https://localhost/login';
+      this.urlMap['login'] = this.origin + '/login';
       // UserDetial
-      this.urlMap['userDetial'] = 'https://localhost/masguser/detail/specify/';
+      this.urlMap['userDetial'] = this.origin + '/masguser/detail/specify/';
       // Reservation
-      this.urlMap['revList'] = 'https://localhost/rev/find';
-      this.urlMap['revSave'] = 'https://localhost/rev/save';
-      this.urlMap['revChangeToCommented'] = 'https://localhost/rev/change/5';
-      this.urlMap['revChangeToCancelled'] = 'https://localhost/rev/change/4';
-      this.urlMap['revChangeToNoShow'] = 'https://localhost/rev/change/3';
-      this.urlMap['revChangeToFinished'] = 'https://localhost/rev/change/2';
+      this.urlMap['revList'] = this.origin + '/rev/find';
+      this.urlMap['revSave'] = this.origin + '/rev/save';
+      this.urlMap['revChangeToCommented'] = this.origin + '/rev/change/5';
+      this.urlMap['revChangeToCancelled'] = this.origin + '/rev/change/4';
+      this.urlMap['revChangeToNoShow'] = this.origin + '/rev/change/3';
+      this.urlMap['revChangeToFinished'] = this.origin + '/rev/change/2';
 
       // Masg Reservation
-      this.urlMap['revList2Masg'] = 'https://localhost/rev/2masg';
+      this.urlMap['revList2Masg'] = this.origin + '/rev/2masg';
 
       // Rev Panel
-      this.urlMap['revPanel'] = 'https://localhost/rev/revpanel';
+      this.urlMap['revPanel'] = this.origin + '/rev/revpanel';
 
       // Setting - RevStatus
-      this.urlMap['settingRSMap'] = 'https://localhost/setting/map/revstatus';
-      this.urlMap['settingRSList'] = 'https://localhost/setting/revstatus/find';
-      this.urlMap['settingRSSave'] = 'https://localhost/setting/revstatus/save';
+      this.urlMap['settingRSMap'] = this.origin + '/setting/map/revstatus';
+      this.urlMap['settingRSList'] = this.origin + '/setting/revstatus/find';
+      this.urlMap['settingRSSave'] = this.origin + '/setting/revstatus/save';
 
       // Setting - RevDuration
-      this.urlMap['settingRDMap'] = 'https://localhost/setting/map/revduration';
-      this.urlMap['settingRDList'] = 'https://localhost/setting/revduration/find';
-      this.urlMap['settingRDSave'] = 'https://localhost/setting/revduration/save';
+      this.urlMap['settingRDMap'] = this.origin + '/setting/map/revduration';
+      this.urlMap['settingRDList'] = this.origin + '/setting/revduration/find';
+      this.urlMap['settingRDSave'] = this.origin + '/setting/revduration/save';
 
 
       // Test URL
-      this.urlMap['getOne'] = 'https://localhost/test/getone';
-      this.urlMap['dateSave'] = 'https://localhost/test/saveone';
+      this.urlMap['getOne'] = this.origin + '/test/getone';
+      this.urlMap['dateSave'] = this.origin + '/test/saveone';
     }
 
   // URL Mapping
