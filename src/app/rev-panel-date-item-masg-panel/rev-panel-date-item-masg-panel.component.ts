@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RevPanelDateItemMasgPanelComponent implements OnInit {
 
-  @Input() private revMasg: string;
+  @Input() public revMasg: string;
   constructor() { }
 
   ngOnInit() {

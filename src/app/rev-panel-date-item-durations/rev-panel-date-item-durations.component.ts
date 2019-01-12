@@ -14,8 +14,8 @@ import { disableBindings } from '@angular/core/src/render3';
 })
 export class RevPanelDateItemDurationsComponent implements OnInit {
 
-  @Input() private revDuration: RevDuration;
-  @Input() private seqNo: number;
+  @Input() public revDuration: RevDuration;
+  @Input() public seqNo: number;
   @Input() private reservation: Reservation;
   @Input() private disableAll: boolean;
 

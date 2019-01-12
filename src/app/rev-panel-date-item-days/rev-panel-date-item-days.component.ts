@@ -15,14 +15,14 @@ import { Reservation } from '../model/reservation';
 export class RevPanelDateItemDaysComponent implements OnInit {
 
   // 
-  @Input() private revDate: string;
+  @Input() public revDate: string;
   @Input() private disableAll: boolean;
   @Input() private reservationMap: { [key: number]: Reservation };
 
   private onRevEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
 
   private revDurationMap: { [key: number]: RevDuration};
-  private revDurationList: RevDuration[];
+  public revDurationList: RevDuration[];
 
   constructor(
     private repositorySettingService: RepositorySettingService

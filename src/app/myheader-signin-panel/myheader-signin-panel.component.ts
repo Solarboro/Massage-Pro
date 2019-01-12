@@ -19,11 +19,11 @@ export class MyheaderSigninPanelComponent implements OnInit {
 
   //
   private loginStatus: boolean;
-  private loginForm: FormGroup;
+  public loginForm: FormGroup;
 
   //
-  private errorFlag: boolean;
-  private errorMsg: string;
+  public errorFlag: boolean;
+  public errorMsg: string;
   private errorMsg_1: string;
   private errorMsg_2: string;
 

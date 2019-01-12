@@ -20,7 +20,7 @@ import { UserService } from '../Service/user.service';
 })
 export class ReservationPanel2MasgComponent implements OnInit {
  // Rev Records
- private revList: Reservation[] = [];
+ public revList: Reservation[] = [];
 
  private subscriptionRevList: Subscription;
 
@@ -32,7 +32,7 @@ export class ReservationPanel2MasgComponent implements OnInit {
  private subscriptionRevDurationMap: Subscription;
 
  // TimeStamp
- private ltsTimeStamp: Date;
+ public ltsTimeStamp: Date;
 
  // Timer
  private timer;

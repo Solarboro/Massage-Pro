@@ -11,7 +11,7 @@ import { Reservation } from '../model/reservation';
 export class RevPanelDateItemComponent implements OnInit {
 
   // 
-  @Input() private revPanelItem: RevPanelItem;
+  @Input() public revPanelItem: RevPanelItem;
   @Input() private disableAll: boolean;
   private onRevEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();
 

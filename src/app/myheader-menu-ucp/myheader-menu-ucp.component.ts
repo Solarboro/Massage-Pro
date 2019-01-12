@@ -11,8 +11,8 @@ import { UserService } from '../Service/user.service';
 export class MyheaderMenuUcpComponent implements OnInit {
 
   constructor(
-    private loginService: LoginService,
-    private userService: UserService
+    public loginService: LoginService,
+    public userService: UserService
   ) {
 
   }

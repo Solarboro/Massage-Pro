@@ -12,7 +12,7 @@ import { UserService } from '../Service/user.service';
 })
 export class RevPanelComponent implements OnInit {
 
-  private username: string;
+  public username: string;
   constructor(
     private userService: UserService
   ) {

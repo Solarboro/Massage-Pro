@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class RevlistComponent implements OnInit {
   // Rev Records
-  private revList: Reservation[] = [];
+  public revList: Reservation[] = [];
 
   private subscriptionRevList: Subscription;
 
@@ -42,7 +42,7 @@ export class RevlistComponent implements OnInit {
   private seqTo: number;
 
   // TimeStamp
-  private ltsTimeStamp: Date;
+  public ltsTimeStamp: Date;
 
   constructor(
     private repositorySettingService: RepositorySettingService,

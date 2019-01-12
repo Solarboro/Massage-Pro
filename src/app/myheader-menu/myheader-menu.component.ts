@@ -9,10 +9,11 @@ import { LoginService } from '../Service/login-service';
 })
 export class MyheaderMenuComponent implements OnInit {
 
-  constructor(private menGurard: MenuGuard,
-              private menuGuardMasg: MenuGuardMasg,
-              private menuGuardAdmin: MenuGuardAdmin,
-              private loginService: LoginService
+  constructor(
+    public menGurard: MenuGuard,
+    public menuGuardMasg: MenuGuardMasg,
+    public menuGuardAdmin: MenuGuardAdmin,
+    public loginService: LoginService
               ) { }
 
   ngOnInit() {

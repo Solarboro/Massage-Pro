@@ -19,11 +19,9 @@ import { ListcontollerComponent } from './listcontoller/listcontoller.component'
 import { ListfilterComponent } from './listfilter/listfilter.component';
 import { RevPanelComponent } from './rev-panel/rev-panel.component';
 import { RevPanelDateListComponent } from './rev-panel-date-list/rev-panel-date-list.component';
-import { RouterModule, Routes } from '@angular/router';
 import { MyhomeComponent } from './myhome/myhome.component';
 import { LoginService } from './Service/login-service';
 import { MenuGuard, MenuGuardAdmin, MenuGuardMasg } from './controller/menu-guard';
-import { NgSemanticModule } from 'ng-semantic';
 import { MyheaderMenuUcpComponent } from './myheader-menu-ucp/myheader-menu-ucp.component';
 import { RevitemDialogCancelComponent } from './revitem-dialog-cancel/revitem-dialog-cancel.component';
 import { RevitemDialogCommentComponent } from './revitem-dialog-comment/revitem-dialog-comment.component';
@@ -39,18 +37,6 @@ import { ReservationPanel2MasgListComponent } from './reservation-panel2-masg-li
 import { ReservationPanel2MasgListItemComponent } from './reservation-panel2-masg-list-item/reservation-panel2-masg-list-item.component';
 
 registerLocaleData(en);
-
-
-// Routes
-const myRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'logout', redirectTo: 'home' },
-  { path: 'home', component: MyhomeComponent },
-  { path: 'newRev', component: RevPanelComponent, canActivate: [MenuGuard]},
-  { path: 'revList', component: RevlistComponent, canActivate: [MenuGuard]},
-
-  { path: 'revList2Masg', component: ReservationPanel2MasgComponent, canActivate: [MenuGuardMasg]}
-];
 
 @NgModule({
   declarations: [
@@ -87,16 +73,13 @@ const myRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NoopAnimationsModule,
-    RouterModule.forRoot(myRoutes),
-    NgSemanticModule
+    NoopAnimationsModule
   ],
   providers: [
     LoginService,
     MenuGuard,
     MenuGuardAdmin,
-    MenuGuardMasg,
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    MenuGuardMasg
   ],
   bootstrap: [AppComponent]
 })

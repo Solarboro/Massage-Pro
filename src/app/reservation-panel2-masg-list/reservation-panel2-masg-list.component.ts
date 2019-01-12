@@ -20,9 +20,9 @@ export class ReservationPanel2MasgListComponent implements OnInit {
   @Input() private revStatusMap: { [key: number]: RevStatus};
   @Input() private revDurationMap: { [key: number]: RevDuration};
 
-  private statusColor: string;
-  private statusDesc: string;
-  private revTimeDesc: string;
+  public statusColor: string;
+  public statusDesc: string;
+  public revTimeDesc: string;
 
   // 
   private onNoShowEvent: EventEmitter<Reservation> = new EventEmitter<Reservation>();

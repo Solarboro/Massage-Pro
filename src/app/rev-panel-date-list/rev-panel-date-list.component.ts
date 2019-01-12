@@ -16,7 +16,7 @@ export class RevPanelDateListComponent implements OnInit {
 
   @Input() private username: string;
 
-  private revPanel: RevPanel;
+  public revPanel: RevPanel;
   private syncFlag: boolean;
 
   private subscription: Subscription;
@@ -25,13 +25,13 @@ export class RevPanelDateListComponent implements OnInit {
 
   private smasgUserDetail: Subscription;
 
-  private revFlag: boolean;
-  private revBlkFlag: boolean = true;
+  public revFlag: boolean;
+  public revBlkFlag: boolean = true;
 
-  private timer: Timer;
+  private timer;
 
   // TimeStamp
-  private ltsTimeStamp: Date;
+  public ltsTimeStamp: Date;
 
 
   constructor(
