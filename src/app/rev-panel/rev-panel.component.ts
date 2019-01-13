@@ -20,6 +20,8 @@ export class RevPanelComponent implements OnInit {
    }
 
   ngOnInit() {
+    $('.revpanel')
+    .transition('scale in', '500ms');
   }
 
 }

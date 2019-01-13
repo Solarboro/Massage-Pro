@@ -101,6 +101,9 @@ export class RevlistComponent implements OnInit {
   ngOnInit() {
     // Refresh Page
     this.refreshPage();
+
+    $('.revlist')
+    .transition('scale in', '500ms');
   }
 
   setPage(pageNo: number): void {
