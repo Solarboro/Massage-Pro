@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reservation } from '../model/reservation';
 import { ApiAgentService } from '../Service/api-agent.service';
 import { RevPanel } from '../model/rev-panel';
+import { Router } from '@angular/router';
+import { LoginService } from '../Service/login-service';
 
 @Component({
   selector: 'app-myheader-getstarted',
@@ -12,7 +14,10 @@ import { RevPanel } from '../model/rev-panel';
 export class MyheaderGetstartedComponent implements OnInit {
 
   constructor(private myhttp: HttpClient,
-              private apiAgentService: ApiAgentService) {
+              private loginService: LoginService,
+              private apiAgentService: ApiAgentService,
+              private router: Router
+              ) {
    }
 
   ngOnInit() {
@@ -22,15 +27,16 @@ export class MyheaderGetstartedComponent implements OnInit {
 
 
     //  forward to New Rev
-    if ( false ) {
+    if ( this.loginService.isLogin() ) {
       // ToDO
+      this.router.navigateByUrl('newRev');
     } else {
     // forward to Login
       $('.ui.sidebar')
       .sidebar('toggle')
       ;
     }
-    
+
     // console.log('start to get request.');
     // this.myhttp.get('http://localhost:8080/rev/find')
     //   .subscribe(
