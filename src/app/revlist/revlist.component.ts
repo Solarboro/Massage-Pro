@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class RevlistComponent implements OnInit {
   // Rev Records
-  public revList: Reservation[] = [];
+  public revList: Reservation[];
 
   private subscriptionRevList: Subscription;
 
@@ -48,44 +48,54 @@ export class RevlistComponent implements OnInit {
     private repositorySettingService: RepositorySettingService,
     private repositoryReservationService: RepositoryReservationService
     ) {
-
-      // 
+      //
       this.curPageNo = 1;
 
-      // 
+      //
       this.listSize = 4;
 
-      // 
+      //
       this.subscriptionRevList =
         this
         .repositoryReservationService
         .latestRevList
         .subscribe(
           data => {
-            this.revList = data;
+            if ( data ) {
+              //
+              this.revList = data;
 
-            // Refresh Page
-            this.refreshPage();
-            this.ltsTimeStamp = new Date();
+              this.refreshPage();
+
+              this.ltsTimeStamp = new Date();
+            }
           }
         );
 
-      // 
+      //
       this.subscriptionRevStatusMap =
           this
           .repositorySettingService
           .latestRevStatusMap
           .subscribe(
-            data => this.revStatusMap = data
+            data => {
+              if ( data ) {
+                this.revStatusMap = data;
+              }
+            }
           );
 
-      // 
+      //
       this.subscriptionRevDurationMap =
             this
             .repositorySettingService
             .latestRevDurationMap
             .subscribe(
-              data => this.revDurationMap = data
+              data => {
+                if ( data ) {
+                  this.revDurationMap = data;
+                }
+              }
             );
 
       // Timer to Auto Refresh
@@ -102,6 +112,7 @@ export class RevlistComponent implements OnInit {
   }
 
   ngOnInit() {
+    //
     $('.revlist')
     .transition('scale in', '500ms');
   }

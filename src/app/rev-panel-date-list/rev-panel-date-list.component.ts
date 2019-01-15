@@ -26,7 +26,7 @@ export class RevPanelDateListComponent implements OnInit {
   private smasgUserDetail: Subscription;
 
   public revFlag: boolean;
-  public revBlkFlag: boolean = true;
+  public revBlkFlag: boolean;
 
   private timer;
 
@@ -44,9 +44,9 @@ export class RevPanelDateListComponent implements OnInit {
             .latestMasgUserDetail
             .subscribe(
               data => {
-                this.masgUserDetail = data;
+                if ( data ) {
+                  this.masgUserDetail = data;
 
-                if ( this.masgUserDetail != null ) {
                   this.revFlag = this.masgUserDetail.curMthRevTimes >= 2 ? false : true;
                   this.revBlkFlag = this.masgUserDetail.revBlocked;
                 }
@@ -58,9 +58,11 @@ export class RevPanelDateListComponent implements OnInit {
                         .latestRevPanel
                         .subscribe(
                           data => {
-                            this.revPanel = data;
-                            this.ltsTimeStamp = new Date();
-                            // this.ltsTimeStamp.toUTCString();
+                            if ( data ) {
+                              //
+                              this.revPanel = data;
+                              this.ltsTimeStamp = new Date();
+                            }
                           }
                         );
 

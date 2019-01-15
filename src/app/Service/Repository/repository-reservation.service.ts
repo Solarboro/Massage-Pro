@@ -27,7 +27,6 @@ export class RepositoryReservationService {
     this.masgUserService.latestMagUser.subscribe(
       masgUser => {
         if ( masgUser ) {
-          console.log(masgUser);
           this.syncUp();
         } else {
           this.clean();
@@ -43,6 +42,7 @@ export class RepositoryReservationService {
 
   // Sync up Data from API Server
   syncUp(): void {
+
     // Direct read data from API
     this.apiAgentService.aGetWP<Reservation[]>('revList', '/' + this.masgUserService.getMasgUser().username)
     .subscribe( data => {

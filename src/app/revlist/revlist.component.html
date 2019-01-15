@@ -21,7 +21,6 @@
       {{ "Updated on: " + ltsTimeStamp.toUTCString() }}
     </button>
 
-
   <!-- No Record Found -->
   <div class="ui positive icon message" *ngIf="revList.length == 0">
       <i class="inbox icon"></i>
@@ -30,20 +29,6 @@
         <a class="ui link" href="/revList">Reserve now!</a>
       </div>
   </div>
-
-  <div class="ui raised text container segment" *ngIf=" !subscriptionRevList || !revStatusMap || !revDurationMap " >
-    <div class="ui placeholder">
-      <div class="image header">
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-      <div class="paragraph">
-        <div class="medium line"></div>
-        <div class="short line"></div>
-      </div>
-    </div>
-  </div>
-  
 
   <!-- Record Found -->
   <div  *ngIf="revList && revList.length != 0">
