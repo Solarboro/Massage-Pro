@@ -5,6 +5,7 @@ import { RevDuration } from '../model/setting/rev-duration';
 import { RepositorySettingService } from '../Service/Repository/repository-setting.service';
 import { RepositoryReservationService } from '../Service/Repository/repository-reservation.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-revlist',
@@ -45,6 +46,7 @@ export class RevlistComponent implements OnInit {
   public ltsTimeStamp: Date;
 
   constructor(
+    private router: Router,
     private repositorySettingService: RepositorySettingService,
     private repositoryReservationService: RepositoryReservationService
     ) {
@@ -159,5 +161,9 @@ export class RevlistComponent implements OnInit {
   processCancelEvent(reservation: Reservation): void {
     this.repositoryReservationService.aCancelled(reservation);
 
+  }
+
+  forwardToNewRev(): void {
+    this.router.navigateByUrl('newRev');
   }
 }
