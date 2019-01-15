@@ -1,3 +1,5 @@
+
+
 <div class="ui text container revlist">
   <!-- Header -->
   <div class="ui dividing header">
@@ -29,8 +31,22 @@
       </div>
   </div>
 
+  <div class="ui raised text container segment" *ngIf=" !subscriptionRevList || !revStatusMap || !revDurationMap " >
+    <div class="ui placeholder">
+      <div class="image header">
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="paragraph">
+        <div class="medium line"></div>
+        <div class="short line"></div>
+      </div>
+    </div>
+  </div>
+  
+
   <!-- Record Found -->
-  <div *ngIf="revList.length != 0">
+  <div  *ngIf="revList && revList.length != 0">
     <app-revitem
       *ngFor="let revItem of revList; let seqNo = index"
       [revItem]="revItem"

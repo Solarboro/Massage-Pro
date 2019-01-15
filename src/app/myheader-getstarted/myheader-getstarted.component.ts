@@ -4,7 +4,7 @@ import { Reservation } from '../model/reservation';
 import { ApiAgentService } from '../Service/api-agent.service';
 import { RevPanel } from '../model/rev-panel';
 import { Router } from '@angular/router';
-import { LoginService } from '../Service/login-service';
+import { MasgUserService } from '../Service/masg-user.service';
 
 @Component({
   selector: 'app-myheader-getstarted',
@@ -14,9 +14,9 @@ import { LoginService } from '../Service/login-service';
 export class MyheaderGetstartedComponent implements OnInit {
 
   constructor(private myhttp: HttpClient,
-              private loginService: LoginService,
               private apiAgentService: ApiAgentService,
-              private router: Router
+              private router: Router,
+              private masgUserService: MasgUserService
               ) {
    }
 
@@ -24,10 +24,8 @@ export class MyheaderGetstartedComponent implements OnInit {
   }
 
   getStart(): void {
-
-
     //  forward to New Rev
-    if ( this.loginService.isLogin() ) {
+    if ( this.masgUserService.getStatus() ) {
       // ToDO
       this.router.navigateByUrl('newRev');
     } else {

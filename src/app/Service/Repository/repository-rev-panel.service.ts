@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RevPanel } from 'src/app/model/rev-panel';
 import { ApiAgentService } from '../api-agent.service';
 import { Subject, BehaviorSubject } from 'rxjs';
+import { MasgUserService } from '../masg-user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class RepositoryRevPanelService {
   public revPanel: RevPanel;
 
   constructor(
-    private apiAgentService: ApiAgentService
+    private apiAgentService: ApiAgentService,
+    private masgUserService: MasgUserService
   ) {
     // 
     this.revPanel = null;

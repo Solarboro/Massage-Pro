@@ -3,11 +3,9 @@ import { Reservation } from '../model/reservation';
 import { RevStatus } from '../model/setting/rev-status';
 import { RevDuration } from '../model/setting/rev-duration';
 import { RepositorySettingService } from '../Service/Repository/repository-setting.service';
-import { RepositoryReservationService } from '../Service/Repository/repository-reservation.service';
 import { Subscription } from 'rxjs';
 import { RepositoryMasgReservationService } from '../Service/Repository/repository-masg-reservation.service';
-import { LoginService } from '../Service/login-service';
-import { UserService } from '../Service/user.service';
+import { MasgUserService } from '../Service/masg-user.service';
 
 
 @Component({
@@ -38,12 +36,12 @@ export class ReservationPanel2MasgComponent implements OnInit {
  private timer;
 
  constructor(
-   private userService: UserService,
+   private masgUserService: MasgUserService,
    private repositorySettingService: RepositorySettingService,
    private repositoryMasgReservationService: RepositoryMasgReservationService
    ) {
 
-     // 
+     //
      this.subscriptionRevList =
        this
        .repositoryMasgReservationService
@@ -123,11 +121,11 @@ export class ReservationPanel2MasgComponent implements OnInit {
  }
 
  processSearchEvent(searchDate: string): void {
-  //  
+  //
     this.repositoryMasgReservationService.para =
-    '?revMasg=' + this.userService.getUsername() + '&revDate=' + searchDate;
+    '?revMasg=' + this.masgUserService.getMasgUser().username + '&revDate=' + searchDate;
 
-  // 
+  //
     this.repositoryMasgReservationService.syncUp();
  }
 

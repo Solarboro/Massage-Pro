@@ -1,40 +1,40 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { UserService } from '../Service/user.service';
+import { MasgUserService } from '../Service/masg-user.service';
 
 @Injectable()
 export class MenuGuard implements CanActivate {
-    constructor(private userService: UserService) {
+    constructor(private masgUserService: MasgUserService) {
 
     }
 
     //
     canActivate(): boolean {
-        return this.userService.isUser();
+        return this.masgUserService.getMasgUser() && this.masgUserService.getMasgUser().role === 'USER';
     }
 }
 
 @Injectable()
 export class MenuGuardAdmin implements CanActivate {
-    constructor(private userService: UserService) {
+    constructor(private masgUserService: MasgUserService) {
 
     }
 
     //
     canActivate(): boolean {
-        return this.userService.isAdmin();
+        return this.masgUserService.getMasgUser() && this.masgUserService.getMasgUser().role === 'ADMIN';
     }
 }
 
 @Injectable()
 export class MenuGuardMasg implements CanActivate {
-    constructor(private userService: UserService) {
+    constructor(private masgUserService: MasgUserService) {
 
     }
 
     //
     canActivate(): boolean {
-        return this.userService.isMasg();
+        return this.masgUserService.getMasgUser() && this.masgUserService.getMasgUser().role === 'MASG';
     }
 }
 

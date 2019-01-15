@@ -4,21 +4,16 @@ import { RepositoryReservationService } from './repository-reservation.service';
 import { RepositoryRevPanelService } from './repository-rev-panel.service';
 import { RepositoryMasgReservationService } from './repository-masg-reservation.service';
 import { RepositoryMasgUserDetailService } from './repository-masg-user-detail.service';
-import { UserService } from '../user.service';
+import { MasgUserService } from '../masg-user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RepositoryService {
 
-  public masgPDFPara: string;
-
-  public paraMasgUserDetial: string;
-
   constructor(
-    // 
-    private userService: UserService,
-    // 
+    private masgUserService: MasgUserService,
+
     private repositoryMasgUserDetailService: RepositoryMasgUserDetailService,
 
     // User
@@ -29,15 +24,43 @@ export class RepositoryService {
     // Masg
     private repositoryMasgReservationService: RepositoryMasgReservationService
 
-  ) { }
+  ) {
+    //
+    this.masgUserService
+    .latestMagUser
+    .subscribe(
+      masgUser => {
+        // Pre Load
+        if ( masgUser ) {
+          this.syncUpSetting();
+
+          // Sync User Data
+          if ( masgUser.role === 'USER') {
+            this.syncUpUserData();
+          }
+
+          // Sync Masg Data
+          if ( masgUser.role === 'MASG') {
+            this.syncUpMasgData();
+          }
+
+          // Sync Admin Data
+          if ( masgUser.role === 'ADMIN') {
+            this.syncUpAdminData();
+          }
+        } else {
+          this.cleanAdminData();
+          this.cleanMasgData();
+          this.cleanUserData();
+        }
+
+      }
+    );
+  }
 
   // Sync up Data from API Server
     syncUpSetting(): void {
       this.repositorySettingService.syncUp();
-
-      //
-      this.repositoryMasgUserDetailService.para = '/' + this.userService.getUsername();
-      this.repositoryMasgUserDetailService.syncUp();
     }
 
   // 
@@ -53,7 +76,10 @@ export class RepositoryService {
 
   // 
     syncUpMasgData(): void {
-      this.repositoryMasgReservationService.para = this.masgPDFPara;
+      this.repositoryMasgReservationService.para = '?revMasg='
+      + this.masgUserService.getMasgUser().username
+      + '&revDate='
+      + this.calSearchDate();
       this.repositoryMasgReservationService.syncUp();
     }
 
@@ -73,4 +99,12 @@ export class RepositoryService {
     cleanMasgData(): void {
       this.repositoryMasgReservationService.clean();
     }
+
+    calSearchDate(): string {
+      const toDay: Date = new Date();
+      const month: string = ('0' + (toDay.getMonth() + 1)).slice(-2);
+      const day: string = ('0' + toDay.getDate()).slice(-2);
+
+      return toDay.getFullYear() + '-' + month + '-' + day;
+  }
 }

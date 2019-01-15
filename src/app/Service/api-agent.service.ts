@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoginService } from './login-service';
-import { UserService } from './user.service';
+import { MasgUserService } from './masg-user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +19,31 @@ export class ApiAgentService {
   private origin: string;
   constructor(
     private httpClient: HttpClient,
-    private userService: UserService
+    private masgUserService: MasgUserService
   ) {
+
+    // Subject
+    this.masgUserService.latestJwt.subscribe(
+      jwt => {
+        if ( jwt ) {
+          this.requestHeader['Authorization'] = 'Bearer ' + this.masgUserService.getJwt();
+        }
+      }
+    );
     // Init Reqest Header
       // Token / APIKey
       // this.requestHeader['Token'] = 'TBC';
-      // Set Origin
- 
-      // Individual mode 
-      this.origin = 'https://localhost';
-
-      // Intergration Mode
-      // this.origin = location.protocol + '//' + location.hostname;
 
       // Accept Type & Content Type
       this.requestHeader['Accept'] = 'application/json;charset=UTF-8';
       this.requestHeader['Content-Type'] = 'application/json;charset=UTF-8';
+
+      // Set Origin
+      // Individual mode
+      this.origin = 'https://localhost';
+
+      // Intergration Mode
+      // this.origin = location.protocol + '//' + location.hostname;
 
     // Url Mapping
       this.urlMap = {};

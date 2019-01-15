@@ -20,7 +20,6 @@ import { ListfilterComponent } from './listfilter/listfilter.component';
 import { RevPanelComponent } from './rev-panel/rev-panel.component';
 import { RevPanelDateListComponent } from './rev-panel-date-list/rev-panel-date-list.component';
 import { MyhomeComponent } from './myhome/myhome.component';
-import { LoginService } from './Service/login-service';
 import { MenuGuard, MenuGuardAdmin, MenuGuardMasg } from './controller/menu-guard';
 import { MyheaderMenuUcpComponent } from './myheader-menu-ucp/myheader-menu-ucp.component';
 import { RevitemDialogCancelComponent } from './revitem-dialog-cancel/revitem-dialog-cancel.component';
@@ -76,7 +75,6 @@ registerLocaleData(en);
     NoopAnimationsModule
   ],
   providers: [
-    LoginService,
     MenuGuard,
     MenuGuardAdmin,
     MenuGuardMasg

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiAgentService } from '../api-agent.service';
 import { Reservation } from 'src/app/model/reservation';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { UserService } from '../user.service';
+import { MasgUserService } from '../masg-user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,21 +18,33 @@ export class RepositoryReservationService {
 
   constructor(
     private apiAgentService: ApiAgentService,
-    private userService: UserService
+    private masgUserService: MasgUserService
   ) {
-    // 
-    this.reservationList = [];
+    //
+    this.reservationList = null;
+
+    // ob
+    this.masgUserService.latestMagUser.subscribe(
+      masgUser => {
+        if ( masgUser ) {
+          console.log(masgUser);
+          this.syncUp();
+        } else {
+          this.clean();
+        }
+      }
+    );
 
    }
   //  Clean Data
   clean(): void {
-    this.reservationList = [];
+    this.reservationList = null;
   }
 
   // Sync up Data from API Server
   syncUp(): void {
     // Direct read data from API
-    this.apiAgentService.aGetWP<Reservation[]>('revList', '/' + this.userService.getUsername())
+    this.apiAgentService.aGetWP<Reservation[]>('revList', '/' + this.masgUserService.getMasgUser().username)
     .subscribe( data => {
 
       // 

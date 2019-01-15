@@ -21,8 +21,8 @@ export class RevlistComponent implements OnInit {
   private subscriptionRevList: Subscription;
 
   //
-  private revStatusMap: { [key: number]: RevStatus};
-  private revDurationMap: { [key: number]: RevDuration};
+  public revStatusMap: { [key: number]: RevStatus};
+  public revDurationMap: { [key: number]: RevDuration};
 
   private subscriptionRevStatusMap: Subscription;
   private subscriptionRevDurationMap: Subscription;
@@ -63,6 +63,9 @@ export class RevlistComponent implements OnInit {
         .subscribe(
           data => {
             this.revList = data;
+
+            // Refresh Page
+            this.refreshPage();
             this.ltsTimeStamp = new Date();
           }
         );
@@ -99,9 +102,6 @@ export class RevlistComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Refresh Page
-    this.refreshPage();
-
     $('.revlist')
     .transition('scale in', '500ms');
   }

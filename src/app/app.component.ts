@@ -16,9 +16,6 @@ export class AppComponent {
   constructor(
     private repositoryService: RepositoryService
   ) {
-    // Sync up Setting.
-    this.repositoryService.syncUpSetting();
-
   }
 
 }

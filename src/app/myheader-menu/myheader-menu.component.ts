@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuGuard, MenuGuardAdmin, MenuGuardMasg } from '../controller/menu-guard';
-import { LoginService } from '../Service/login-service';
+import { MasgUserService } from '../Service/masg-user.service';
 
 @Component({
   selector: 'app-myheader-menu',
@@ -13,7 +13,7 @@ export class MyheaderMenuComponent implements OnInit {
     public menGurard: MenuGuard,
     public menuGuardMasg: MenuGuardMasg,
     public menuGuardAdmin: MenuGuardAdmin,
-    public loginService: LoginService
+    public masgUserService: MasgUserService
               ) { }
 
   ngOnInit() {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiAgentService } from '../api-agent.service';
 import { Reservation } from 'src/app/model/reservation';
 import { Subject, BehaviorSubject } from 'rxjs';
+import { MasgUserService } from '../masg-user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class RepositoryMasgReservationService {
   public para: string;
 
   constructor(
-    private apiAgentService: ApiAgentService
+    private apiAgentService: ApiAgentService,
+    private masgUserService: MasgUserService
   ) {
     // 
     this.reservationList = [];

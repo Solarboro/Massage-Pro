@@ -42,10 +42,10 @@
 
     <div class="right item">
       <button class="ui inverted basic button" 
-              *ngIf="!loginService.isLogin()"
+              *ngIf="!masgUserService.getStatus()"
               (click)="showLoginPanel()">Sign in</button>
 
-      <app-myheader-menu-ucp *ngIf="loginService.isLogin()"></app-myheader-menu-ucp>
+      <app-myheader-menu-ucp *ngIf="masgUserService.getStatus()"></app-myheader-menu-ucp>
  
 
     </div>

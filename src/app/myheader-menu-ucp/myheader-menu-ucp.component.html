@@ -1,6 +1,6 @@
      <!--  -->
      <div class="ui top pointing inverted dropdown">
-        {{ userService.getUsername() }}
+        {{ masgUserService.getMasgUser().username }}
       <i class="icon dropdown"></i>
       <div class="menu">
 
@@ -9,7 +9,7 @@
           Setting
         </div>
 
-        <a [routerLink]="['logout']" class="item" (click)="loginService.logout()">
+        <a [routerLink]="['logout']" class="item" (click)="masgUserService.logout()">
           <i class="icon sign out"></i>
           Logout
         </a>

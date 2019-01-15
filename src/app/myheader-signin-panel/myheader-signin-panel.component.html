@@ -1,48 +1,35 @@
 <div class="ui right sidebar segment">
-  <form class="ui form" 
-        [class.warning]="!loginForm.valid"
-        [class.error]="!errorFlag"
-        [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm.value)">
-      <div class="ui teal center aligned dividing icon header">
-          <i class="circular bed icon"></i>
-          Sign in to MyMassage
-      </div>
-      
-      <div class="field">
-          <div class="ui left icon input">
-          <i class="user icon"></i>
-          <input type="text" placeholder="Username" [formControl]="loginForm.controls['username']" />
-          </div>
-      </div>
-      
-      <div class="field">
-          <div class="ui left icon input">
-          <i class="lock icon"></i>
-          <input type="password" placeholder="Password" [formControl]="loginForm.controls['password']" />
-          </div>
-      </div>
-      
-      <div class="field">
-          <button type="submit" class="ui teal fluid button">Sign in</button>
-      </div>
-      
-      <!--  -->
-      <div class="ui warning message">
-          Password is "abcd1234"
-      </div>
+  <form class="ui masgSignin form">
+        <div class="ui teal center aligned dividing icon header">
+            <i class="circular bed icon"></i>
+            Sign in to MyMassage
+        </div>
+        
+        <div class="field">
+            <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" placeholder="Username" name="username" />
+            </div>
+        </div>
+        
+        <div class="field">
+            <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" placeholder="Password" name="password" />
+            </div>
+        </div>
 
-      <div class="ui error message">
-        {{ errorMsg }}
-    </div>
-      
-      
-      <div class="field">
-          <div class="ui silder checkbox">
-              <input type="checkbox" tabindex="0" [formControl]="loginForm.controls['remember']" />
-              <label>Remember Me</label>
-          </div>
-          
-      </div>
+        <div class="ui teal fluid submit button">Sign in</div>
+        
+        <div class="ui error message"></div>
+        
+        <div class="ui divider"></div>
+        <div class="field">
+            <div class="ui silder checkbox">
+                <input type="checkbox" tabindex="0" name="rememberme" />
+                <label>Remember Me</label>
+            </div> 
+        </div>
     </form>
  
   </div>
